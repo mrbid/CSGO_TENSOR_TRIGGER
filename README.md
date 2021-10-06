@@ -1,11 +1,19 @@
 # CSGO_TENSOR_TRIGGER
 A series of machine learning trigger bots for Counter-Strike: Global Offensive (CS:GO).
 
+## Latest Release
+
+The latest release is a Standalone FNN which will only activate trigger mode when the player is stationary, it detects a stationary state by checking if any of the W,A,S,D keys are currently pressed. This ensures there is reduced spread when the bot fires but also that there is much less missfire. I believe this solution to not only be lighter on the CPU load but also a much more responsive bot, in my tests I gauge it sampling at ~120 FPS and because an FNN is more generalised it will not hesitate to fire as often as the CNN. [(Source)[https://github.com/mrbid/CSGO_TENSOR_TRIGGER/blob/main/csgo_gold_fnn.c]] [(Linux Binary)[https://github.com/mrbid/CSGO_TENSOR_TRIGGER/raw/main/fgold]]
+
+The prerequisites are: `sudo apt install libxdo-dev libxdo3 libespeak1 libespeak-dev espeak`
+
+## Information
+
 This repository holds the best releases from a series of articles I made that document my research into making a CS:GO auto-trigger bot using machine learning: https://james-william-fletcher.medium.com/list/fps-machine-learning-autoshoot-bot-for-csgo-100153576e93
 
 `GOBOT9_CNN` is the final CNN I produced, I have supplied what I believe to be the best model trained for the computational cost vs accuracy tradeoff. A more complete release, incuding various other trained models and the 96x192 version not included in this repository can be obtained [here](https://mega.nz/file/GvxXHCCB#yph08_eQ2jrb_ptXiKKJwXdcggfXPTILKMljBe31FI4) and the specifics of this release are documented in [this article.](https://james-william-fletcher.medium.com/creating-a-machine-learning-auto-shoot-bot-for-cs-go-part-6-af9589941ef3)
 
-This is very similar to the [QUAKE3_TENSOR_TRIGGER](https://github.com/mrbid/QUAKE3_TENSOR_TRIGGER) project only that the sample normalisation is not 0-1 scaled but mean normalised which for this particular purpose had a much better result. It goes to show that how you normalise your input data can have a profound impact upon your model, so don't just assume - test the water.
+This is very similar to the [QUAKE3_TENSOR_TRIGGER](https://github.com/mrbid/QUAKE3_TENSOR_TRIGGER) project only that the sample normalisation is not 0-1 scaled but mean normalised which for this particular purpose had a much better result for a clear detection, 0-1 scaled felt more like a probability range than a binary detection.
 
 I am working on one final release of this bot currently, in the 28x28 sample form, but it is a side project that I am making slow incremental progress with, parly because I am generating a completely new dataset for it which is a slow and laborious process. _(not very invigorating)_
 
