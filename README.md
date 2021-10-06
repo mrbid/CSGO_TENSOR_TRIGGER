@@ -7,6 +7,8 @@ The latest release is a Standalone FNN which will only activate trigger mode whe
 
 The prerequisites are: `sudo apt install libxdo-dev libxdo3 libespeak1 libespeak-dev espeak`
 
+![#f03c15](This one is actually disruptive to online gameplay.)
+
 ## Information
 
 This repository holds the best releases from a series of articles I made that document my research into making a CS:GO auto-trigger bot using machine learning: https://james-william-fletcher.medium.com/list/fps-machine-learning-autoshoot-bot-for-csgo-100153576e93
