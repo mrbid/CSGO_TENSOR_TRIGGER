@@ -25,3 +25,5 @@ Gabe has been very curtious concerning this project, I have noticed a new player
 ---
 
 Terrorising Valve Software since 2003 with no legal reprecussions. God bless Gabe.
+
+![Image of Gabe](https://static.wikia.nocookie.net/mlg-parody/images/3/39/Gabe_newell_meme-580x334.jpg/revision/latest/scale-to-width-down/580?cb=20190811113643)
