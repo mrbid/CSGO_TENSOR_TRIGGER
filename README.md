@@ -1,8 +1,7 @@
 # CSGO_TENSOR_TRIGGER
 A series of machine learning trigger bots for Counter-Strike: Global Offensive (CS:GO).
 
-This repository holds the best releases from a series of articles I made that document my research into making a CS:GO auto-trigger bot using machine learning:<br>
-https://james-william-fletcher.medium.com/list/fps-machine-learning-autoshoot-bot-for-csgo-100153576e93
+This repository holds the best releases from a series of articles I made that document my research into making a CS:GO auto-trigger bot using machine learning: https://james-william-fletcher.medium.com/list/fps-machine-learning-autoshoot-bot-for-csgo-100153576e93
 
 **This bot is designed to target only player heads of counter-terrorists models.**
 
