@@ -7,7 +7,7 @@ The latest release is a Standalone FNN which will only activate trigger mode whe
 
 The prerequisites are: `sudo apt install libxdo-dev libxdo3 libespeak1 libespeak-dev espeak`
 
-**This one is actually disruptive to online gameplay.**
+**This one is actually disruptive to online gameplay.** If your CPU can handle it.
 
 ## Information
 
