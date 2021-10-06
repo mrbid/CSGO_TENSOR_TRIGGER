@@ -1,4 +1,4 @@
-# CSGO_TENSOR_TRIGGER-
+# CSGO_TENSOR_TRIGGER
 A series of machine learning trigger bots for Counter-Strike: Global Offensive (CS:GO).
 
 This repository holds the best releases from a series of articles I made that document my research into making a CS:GO auto-trigger bot using machine learning:<br>
