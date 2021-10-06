@@ -16,7 +16,7 @@ I am working on one final release of this bot currently, in the 28x28 sample for
 
 
 [`GOBOT9_CNN`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT9_CNN) - The best release of the bot so far.<br>
-[`GOBOT7_FNN`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/blob/main/gobot7_fnn.c) - An all in one FNN, not as good as the CNN but it's cute.<br>
+[`GOBOT7_FNN`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/blob/main/gobot7_fnn.c) - An all-in-one FNN, not as good as the CNN but it's cute.<br>
 [`GOBOT_BINS`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT_BINS) - A selection of pre-compiled linux binaries for each incremental version of the bot spanning two datasets.<br>
 [`DATASET_V1`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT_BINS/DATASET_V1) - The V1 dataset was ~300 samples in size.<br>
 [`DATASET_V2`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT_BINS/DATASET_V2) - The V2 dataset was ~750 target samples and ~1900 non-target samples
