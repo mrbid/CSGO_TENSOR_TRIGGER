@@ -74,12 +74,12 @@ int tc = 0;
 */
 static inline float sigmoid(const float x)
 {
-    return 1 / (1 + exp(-x));
+    return 1.f / (1.f + exp(-x));
 }
 
 float processModel(const float* input)
 {
-    float o1 = 0;
+    float o1 = 0.f;
     const int imax = slall+1;
     for(int i = 0; i < imax; i++)
     {
@@ -94,7 +94,7 @@ float processModel(const float* input)
         }
     }
 
-    const float out = (o1 * 17.364222) + -1.6903546;
+    const float out = (o1 * 17.364222.f) + -1.6903546.f;
     //return (out+100)*0.005; //when imax == slall (no bias or tanh)
     //return (out+20)*0.025;
     return sigmoid(out);
@@ -191,9 +191,9 @@ void processScanArea(Window w)
     const Colormap map = XDefaultColormap(d, si);
 
     // extract colour information
-    double rh = 0, rl = 99999999999999, rm = 0;
-    double gh = 0, gl = 99999999999999, gm = 0;
-    double bh = 0, bl = 99999999999999, bm = 0;
+    double rh = 0.f, rl = 99999999999999.f, rm = 0.f;
+    double gh = 0.f, gl = 99999999999999.f, gm = 0.f;
+    double bh = 0.f, bl = 99999999999999.f, bm = 0.f;
     int i = 0;
     for(int y = 0; y < sh; y++)
     {
