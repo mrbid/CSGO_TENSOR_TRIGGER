@@ -3,7 +3,7 @@ A series of machine learning trigger bots for Counter-Strike: Global Offensive (
 
 ## Latest Release
 
-The latest release is a Standalone FNN which will only activate trigger mode when the player is stationary, it detects a stationary state by checking if any of the W,A,S,D keys are currently pressed. This ensures there is reduced spread when the bot fires but also that there is much less missfire when travelling around the map. I believe this solution to not only be lighter on the CPU load but also a much more responsive bot, in my tests I gauge it sampling at ~120 FPS and because an FNN is more generalised it will not hesitate to fire as often as the CNN. [(Source)[https://github.com/mrbid/CSGO_TENSOR_TRIGGER/blob/main/csgo_gold_fnn.c]] [(Linux Binary)[https://github.com/mrbid/CSGO_TENSOR_TRIGGER/raw/main/fgold]]
+The latest release is a Standalone FNN which will only activate trigger mode when the player is stationary, it detects a stationary state by checking if any of the W,A,S,D keys are currently pressed. This ensures there is reduced spread when the bot fires but also that there is much less missfire when travelling around the map. I believe this solution to not only be lighter on the CPU load but also a much more responsive bot, in my tests I gauge it sampling at ~120 FPS and because an FNN is more generalised it will not hesitate to fire as often as the CNN. [`Source`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/blob/main/csgo_gold_fnn.c) [`Linux Binary`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/raw/main/fgold)
 
 The prerequisites are: `sudo apt install libxdo-dev libxdo3 libespeak1 libespeak-dev espeak`
 
