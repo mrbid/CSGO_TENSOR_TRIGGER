@@ -10,7 +10,7 @@ https://james-william-fletcher.medium.com/list/fps-machine-learning-autoshoot-bo
 
 This is very similar to the [QUAKE3_TENSOR_TRIGGER](https://github.com/mrbid/QUAKE3_TENSOR_TRIGGER) project only that the sample normalisation is not 0-1 scaled but mean normalised which for this particular purpose had a much better result. It goes to show that how you normalise your input data can have a profound impact upon your model, so don't just assume - test the water.
 
-I am working on one final release of this bot currently, in the 28x28 sample form, but it is a side project that I am making slow incremental progress with.
+I am working on one final release of this bot currently, in the 28x28 sample form, but it is a side project that I am making slow incremental progress with, parly because I am generating a completely new dataset for it which is a slow and laborious process.
 
 ---
 
