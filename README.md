@@ -3,7 +3,7 @@ A series of machine learning trigger bots for Counter-Strike: Global Offensive (
 
 ## Latest Release
 
-The latest release is a Standalone FNN which will only activate trigger mode when the player is stationary, it detects a stationary state by checking if any of the W,A,S,D keys are currently pressed. This ensures there is reduced spread when the bot fires but also that there is much less missfire when travelling around the map. This solution is not only lighter on the CPU but it is also a much more responsive, in my tests I gauge it sampling at ~120 FPS and because an FNN is more generalised it will not hesitate to fire as often as the CNN. [`Source`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/blob/main/csgo_gold_fnn.c) [`Linux Binary`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/raw/main/fgold)
+The latest release is a Standalone FNN which will only activate trigger mode when the player is stationary, it detects a stationary state by checking if any of the W,A,S,D keys are currently pressed. This ensures there is reduced spread when the bot fires but also that there is much less missfire when travelling around the map. This solution is not only lighter on the CPU but it is also a much more responsive, in my tests I gauge it sampling at ~120 FPS and because an FNN is more generalised it will not hesitate to fire as often as the CNN. [`Source`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/blob/main/StandaloneSrc/csgo_gold_fnn.c) [`Linux Binary`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/raw/main/GOBOT_BINS/DATASET_V2/GOLD_FNN/fgold)
 
 The prerequisites are: `sudo apt install libxdo-dev libxdo3 libespeak1 libespeak-dev espeak`
 
@@ -33,13 +33,13 @@ Gabe has been very curtious concerning this project, I have noticed a new player
 
 ---
 
-[`GOBOT9_CNN`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT9_CNN) - The best release of the bot so far.<br>
-[`GOBOT7_FNN`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/blob/main/gobot7_fnn.c) - An all-in-one FNN, not as good as the CNN but it's cute.<br>
+[`GOBOT11_CNN`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT11_CNN) - The best release of the bot so far. Deadly.<br>
+[`GOLD_FNN`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/blob/main/StandaloneSrc/csgo_gold_fnn.c) - An all-in-one FNN, it's a ruthless killer.<br>
 
 [`GOBOT_BINS`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT_BINS) - A selection of pre-compiled linux binaries for each incremental version of the bot spanning two datasets.<br>
 - [`DATASET_V1`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT_BINS/DATASET_V1) - The V1 dataset was ~300 samples in size. _(Counter-Terrorist only)_ ([download](https://github.com/TFCNN/Projects/blob/main/counter_terrorist_dataset_and_weights.zip))<br>
 - [`DATASET_V2`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT_BINS/DATASET_V2) - The V2 dataset was ~750 target samples and ~1900 non-target samples ([download](https://github.com/mrbid/DATASETS/raw/main/CSGO.zip))
-- `DATASET_V3` - The V3 dataset is currently ~2500 target and non-target samples.
+- [`DATASET_V3`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT_BINS/DATASET_V3) - The V3 dataset is currently ~2500 target and non-target samples.
 
 ---
 
