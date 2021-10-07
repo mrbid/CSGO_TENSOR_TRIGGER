@@ -19,7 +19,7 @@ The game crosshair will get in the way of the bots ability to detect player mode
 
 ## Tips 'n Tricks
 
-The bot generally regulates your rate of fire for you but if you need more controlled bursts enabled sample capture, this will ensure shots are fired in single rythmatic bursts.
+The bot generally regulates your rate of fire for you but if you need more controlled bursts enable sample capture, this will ensure shots are fired in single rythmatic bursts.
 
 ## Information
 
