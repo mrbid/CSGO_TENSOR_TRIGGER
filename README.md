@@ -9,6 +9,18 @@ The prerequisites are: `sudo apt install libxdo-dev libxdo3 libespeak1 libespeak
 
 **This one is actually disruptive to online gameplay.** If your CPU can handle it.
 
+## Crosshair
+
+The game crosshair will get in the way of the bots ability to detect player models on the screen, you have a few options to mitigate this, each option is just as effective as the other:
+- Change your crosshair settings in CS:GO to a single green pixel center dot with no outline.
+- Set your CS:GO crossair to invisible by enabling the alpha channel and sliding it to invisible.
+  - Then use the crosshair provided by the bot which encapsulates the scan region with a square.
+  - Or if your monitor supplies a built-in crosshair, use that.
+
+## Tips 'n Tricks
+
+The bot generally regulates your rate of fire for you but if you need more controlled bursts enabled sample capture, this will ensure shots are fired in single rythmatic bursts.
+
 ## Information
 
 This repository holds the best releases from a series of articles I made that document my research into making a CS:GO auto-trigger bot using machine learning: https://james-william-fletcher.medium.com/list/fps-machine-learning-autoshoot-bot-for-csgo-100153576e93
