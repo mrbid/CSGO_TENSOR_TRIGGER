@@ -15,7 +15,7 @@ The game crosshair will get in the way of the bots ability to detect player mode
 - Change your crosshair settings in CS:GO to a single green pixel center dot with no outline.
 - Set your CS:GO crossair to invisible by enabling the alpha channel and sliding it to invisible.
   - Then use the crosshair provided by the bot which encapsulates the scan region with a square.
-  - Or if your monitor supplies a built-in crosshair, use that.
+  - Or if your monitor supplies a built-in crosshair, use that. (because it does not get written to the game renders, it's a hardware overlay)
 
 ## Tips 'n Tricks
 
