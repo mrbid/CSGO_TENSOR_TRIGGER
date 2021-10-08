@@ -33,7 +33,7 @@ Gabe has been very curtious concerning this project, I have noticed a new player
 
 ---
 
-[`GOBOT11_CNN`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT11_CNN) - The best release of the bot so far. Deadly.<br>
+[`GOBOT11_CNN`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT11_CNN) - The best release of the bot so far. Deadly. ([video](https://youtu.be/UMBqk8CAe04))<br>
 [`GOLD_FNN`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/blob/main/StandaloneSrc/csgo_gold_fnn.c) - An all-in-one FNN, it's a ruthless killer.<br>
 
 [`GOBOT_BINS`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT_BINS) - A selection of pre-compiled linux binaries for each incremental version of the bot spanning two datasets.<br>
