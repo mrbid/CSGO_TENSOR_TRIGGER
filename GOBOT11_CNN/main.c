@@ -345,7 +345,8 @@ int main()
     rainbow_printf("Q = Capture non-target sample\n\n");
     rainbow_printf("G = Get activation for reticule area.\n");
     rainbow_printf("H = Get scans per second.\n");
-    rainbow_printf("\nDisable the game crosshair and use the one provided by this bot, or if your monitor provides a crosshair use that.\n\n");
+    rainbow_printf("\nDisable the game crosshair or make the crosshair a single green pixel, or if your monitor provides a crosshair use that.\n\n");
+    rainbow_printf("This bot will only auto trigger when W,A,S,D are not being pressed. (so when your not moving in game, aka stationary)\n\n");
 
     xdo_t* xdo;
     XColor c[9];
