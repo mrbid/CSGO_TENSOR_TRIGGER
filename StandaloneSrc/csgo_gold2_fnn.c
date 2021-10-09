@@ -336,26 +336,6 @@ void processScanArea(Window w)
    ~~ Console Utils
 */
 
-int gre()
-{
-    int r = 0;
-    while(r == 0 || r == 15 || r == 16 || r == 189)
-    {
-        r = (rand()%229)+1;
-    }
-    return r;
-}
-void random_printf(const char* text)
-{
-    const unsigned int len = strlen(text);
-    for(unsigned int i = 0; i < len; i++)
-    {
-        printf("\e[38;5;%im", gre());
-        printf("%c", text[i]);
-    }
-    printf("\e[38;5;123m");
-}
-
 void rainbow_printf(const char* text)
 {
     static unsigned int base_clr = 0;
