@@ -9,6 +9,7 @@ The prerequisites are: `sudo apt install libxdo-dev libxdo3 libespeak1 libespeak
 
 **This one is actually disruptive to online gameplay.** If your CPU can handle it.
 
+**General user keybinds**
 ```
 L-CTRL + L-ALT = Toggle BOT ON/OFF
 R-CTRL + R-ALT = Toggle HOTKEYS ON/OFF
@@ -21,15 +22,17 @@ L-SHIFT + 3 = Toggle Missfire Reduction (medium, high, off)
 
 P = Toggle crosshair
 
-L = Toggle sample capture
-Q = Capture non-target sample
-
-G = Get activation for reticule area.
-H = Get scans per second.
-
 Disable the game crosshair or make the crosshair a single green pixel, or if your monitor provides a crosshair use that.
 
 This bot will only auto trigger when W,A,S,D are not being pressed. (so when your not moving in game, aka stationary)
+```
+
+**Dev keybinds**
+```
+L = Toggle sample capture
+Q = Capture non-target sample
+G = Get activation for reticule area.
+H = Get scans per second.
 ```
 
 ## Crosshair
