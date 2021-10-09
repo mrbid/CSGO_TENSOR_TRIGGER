@@ -17,7 +17,7 @@ TAB + 1-6 = Select Single Model Mode (worst to best)
 
 L-SHIFT + 1 = Desperate Mode (all models)
 L-SHIFT + 2 = Confidence Mode (all models averaged)
-L-SHIFT + 3 = Toggle Missfire Reduction
+L-SHIFT + 3 = Toggle Missfire Reduction (medium, high, off)
 
 P = Toggle crosshair
 
