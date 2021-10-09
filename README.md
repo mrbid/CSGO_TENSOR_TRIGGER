@@ -40,7 +40,7 @@ H = Get scans per second.
 
 The game crosshair will get in the way of the bots ability to detect player models on the screen, you have a few options to mitigate this, each option is just as effective as the other:
 - Change your crosshair settings in CS:GO to a single green pixel center dot with no outline.
-- Set your CS:GO crossair to invisible by enabling the alpha channel and sliding it to invisible.
+- Set your CS:GO crosshair to invisible by enabling the alpha channel and sliding it to invisible.
   - Then use the crosshair provided by the bot which encapsulates the scan region with a square.
   - Or if your monitor supplies a built-in crosshair, use that. _(because it does not get written to the game renders, it's a hardware overlay)_
 
