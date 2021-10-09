@@ -11,8 +11,8 @@ The latest release is a Standalone FNN which will only activate trigger mode whe
 - `sudo apt install libxdo-dev libxdo3 libespeak1 libespeak-dev espeak`
 
 **Notices**
-- Disable the game crosshair or make the crosshair a single green pixel, or if your monitor provides a crosshair use that.
-- This bot will only auto trigger when W,A,S,D are not being pressed. (so when your not moving in game, aka stationary)
+- Disable crosshair or make the crosshair a single green pixel, or use monitor overlay crosshair.
+- This bot will only auto trigger when when stationary _(W,A,S,D are not being pressed)_.
 
 **General user keybinds**
 ```
