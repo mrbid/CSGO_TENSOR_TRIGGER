@@ -9,6 +9,29 @@ The prerequisites are: `sudo apt install libxdo-dev libxdo3 libespeak1 libespeak
 
 **This one is actually disruptive to online gameplay.** If your CPU can handle it.
 
+```
+L-CTRL + L-ALT = Toggle BOT ON/OFF
+R-CTRL + R-ALT = Toggle HOTKEYS ON/OFF
+
+TAB + 1-6 = Select Single Model Mode (worst to best)
+
+L-SHIFT + 1 = Desperate Mode (all models)
+L-SHIFT + 2 = Confidence Mode (all models averaged)
+L-SHIFT + 3 = Toggle Missfire Reduction
+
+P = Toggle crosshair
+
+L = Toggle sample capture
+Q = Capture non-target sample
+
+G = Get activation for reticule area.
+H = Get scans per second.
+
+Disable the game crosshair or make the crosshair a single green pixel, or if your monitor provides a crosshair use that.
+
+This bot will only auto trigger when W,A,S,D are not being pressed. (so when your not moving in game, aka stationary)
+```
+
 ## Crosshair
 
 The game crosshair will get in the way of the bots ability to detect player models on the screen, you have a few options to mitigate this, each option is just as effective as the other:
@@ -20,6 +43,12 @@ The game crosshair will get in the way of the bots ability to detect player mode
 ## Tips 'n Tricks
 
 The bot generally regulates your rate of fire for you but if you need more controlled bursts enable sample capture, this will ensure shots are fired in single rythmatic bursts. _(its a side effect from ensuring duplicate samples of the same frame are not captured)_
+
+## FNN vs CNN
+
+While a CNN is generally better, it's only marginally so. An FNN has a considerable reduction in complexity, and performs nearly as well or even better in some cases. A CNN will run on a CPU but will take more resources than an FNN and while a CNN can run on a GPU quite efficiently, we're entering an era now where users are more likely to want to utilise a single CPU core that is being unused than to dedicate some GPU resources. A CNN will be better at detecting an enemy reliably with fast response times, but it will also detect the enemy without locality which means the FNN is more likely to get a shot in the head as where a CNN is more likely to fire and slightly miss a target.
+
+Overall the marginal benefit of a CNN can be seen as a trade-off, where the CNN excels, the FNN can excel to a different vantage, and when you consider the reduced complexity, an FNN is a ~3kb set of weights on each scan running faster on a CPU by utilising FMA and a CNN is ~500kb set of weights per scan and runs faster on a GPU.
 
 ## Information
 
