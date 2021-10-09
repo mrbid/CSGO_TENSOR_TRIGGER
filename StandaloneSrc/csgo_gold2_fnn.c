@@ -534,41 +534,49 @@ int main()
                 if(key_is_pressed(d, XK_Tab) && key_is_pressed(d, XK_1))
                 {
                     trigger_mode = 1;
+                    rainbow_line_printf("MODEL: 1\n");
                     speakS("M 1.");
                 }
                 if(key_is_pressed(d, XK_Tab) && key_is_pressed(d, XK_2))
                 {
                     trigger_mode = 2;
+                    rainbow_line_printf("MODEL: 2\n");
                     speakS("M 2.");
                 }
                 if(key_is_pressed(d, XK_Tab) && key_is_pressed(d, XK_3))
                 {
                     trigger_mode = 3;
+                    rainbow_line_printf("MODEL: 3\n");
                     speakS("M 3.");
                 }
                 if(key_is_pressed(d, XK_Tab) && key_is_pressed(d, XK_4))
                 {
                     trigger_mode = 4;
+                    rainbow_line_printf("MODEL: 4\n");
                     speakS("M 4.");
                 }
                 if(key_is_pressed(d, XK_Tab) && key_is_pressed(d, XK_5))
                 {
                     trigger_mode = 5;
+                    rainbow_line_printf("MODEL: 5\n");
                     speakS("M 5.");
                 }
                 if(key_is_pressed(d, XK_Tab) && key_is_pressed(d, XK_6))
                 {
                     trigger_mode = 6;
+                    rainbow_line_printf("MODEL: 6\n");
                     speakS("M 6.");
                 }
                 if(key_is_pressed(d, XK_Shift_L) && key_is_pressed(d, XK_1))
                 {
                     trigger_mode = 0;
+                    rainbow_line_printf("MODEL: Desperate\n");
                     speakS("Desperate.");
                 }
                 if(key_is_pressed(d, XK_Shift_L) && key_is_pressed(d, XK_2))
                 {
                     trigger_mode = -1;
+                    rainbow_line_printf("MODEL: Confidence\n");
                     speakS("Confidence.");
                 }
                 if(key_is_pressed(d, XK_Shift_L) && key_is_pressed(d, XK_3))
@@ -576,12 +584,20 @@ int main()
                     if(REPEAT_ACTIVATION == 6)
                     {
                         REPEAT_ACTIVATION = 0;
+                        rainbow_line_printf("Miss Fire Reduction Off.\n");
                         speakS("Miss Fire Reduction Off.");
+                    }
+                    else if(REPEAT_ACTIVATION == 3)
+                    {
+                        REPEAT_ACTIVATION = 6;
+                        rainbow_line_printf("Miss Fire Reduction High.\n");
+                        speakS("Miss Fire Reduction High.");
                     }
                     else
                     {
-                        REPEAT_ACTIVATION = 6;
-                        speakS("Miss Fire Reduction On.");
+                        REPEAT_ACTIVATION = 3;
+                        rainbow_line_printf("Miss Fire Reduction Medium.\n");
+                        speakS("Miss Fire Reduction Medium.");
                     }
                 }
 
