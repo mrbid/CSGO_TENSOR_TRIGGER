@@ -58,7 +58,7 @@ Overall the marginal benefit of a CNN can be seen as a trade-off, where the CNN 
 
 On [Line 26](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/blob/main/GOBOT12_CNN/Trainer/train.py#L26) of `Trainer/train.py` in [GOBOT12_CNN](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT12_CNN) you can increase the number of kernels/filters per layer. By default this is set to 16 as it's an adequate tradeoff of compute resources to minimal missfire. As you increase this value the compute resources tend to grow at disproportionate rate to the reduction in missfire. Although if you were to increase this to 64, or even 256 or more _(stick to powers of 2)_, you basically end up with, practically no missfire.
 
-The CNN is the best solution, if you have have the techical know how to set this up to utilise the GPU with Tensorflow you should be fine to run this at whatever cost on your GPU without any impact on framerate. The FNN running on the CPU in comparison will NEVER be as good as the CNN. But if you are after a light weight alternative to the CNN, or just don't know how to setup Tensorflow, the FNN is almost as good as the CNN at 16 kernels per layer.
+The CNN is the best solution, if you have have the techical know how to set this up to utilise the GPU with Tensorflow you should be fine to run this at whatever cost on your GPU without any impact on framerate _(within reason)_. The FNN running on the CPU in comparison will NEVER be as good as the CNN. But if you are after a light weight alternative to the CNN, or just don't know how to setup Tensorflow, the FNN is almost as good as the CNN at 16 kernels per layer.
 
 ## Information
 
