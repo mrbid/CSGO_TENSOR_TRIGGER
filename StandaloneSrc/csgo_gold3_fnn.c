@@ -9,7 +9,7 @@
     Creating the datasets to train these models takes hours and hours of work.
 
     A little tip, the bot executes by default in confidence mode which is an
-    average of the result every model outputs. You may find hitting TAB + 7
+    average of the result output by every model. You may find hitting TAB + 7
     to enable only the latest trained model (the best) is more effective.
     
     Prereq:
