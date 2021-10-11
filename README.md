@@ -71,7 +71,7 @@ Gabe has been very curtious concerning this project, I have noticed a new player
 [`GOBOT11_CNN`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT11_CNN) - The best release of the bot so far. Deadly. ([video](https://youtu.be/UMBqk8CAe04))<br>
 [`GOLD2_FNN`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/blob/main/StandaloneSrc/csgo_gold2_fnn.c) - An all-in-one FNN, it's a ruthless killer.<br>
 
-[`GOBOT_BINS`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT_BINS) - A selection of pre-compiled linux binaries for each incremental version of the bot spanning two datasets.<br>
+[`GOBOT_BINS`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT_BINS) - A selection of pre-compiled linux binaries for each incremental release.<br>
 - [`DATASET_V1`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT_BINS/DATASET_V1) - The V1 dataset is 768 samples in size, 302 target samples. _(Counter-Terrorist only)_ ([download](https://github.com/TFCNN/Projects/blob/main/counter_terrorist_dataset_and_weights.zip))<br>
 - [`DATASET_V2`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT_BINS/DATASET_V2) - The V2 dataset is ~750 target samples and ~1900 non-target samples ([download](https://github.com/mrbid/DATASETS/raw/main/CSGO.zip))
 - [`DATASET_V3`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT_BINS/DATASET_V3) - The V3 dataset is ~5,000 samples with an almost even split. ([download](https://github.com/mrbid/DATASETS/raw/main/CSGO3.zip))
