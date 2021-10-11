@@ -11,6 +11,7 @@
     A little tip, the bot executes by default in confidence mode which is an
     average of the result output by every model. You may find hitting TAB + 7
     to enable only the latest trained model (the best) is more effective.
+        (and 6x lighter to run on your CPU)
     
     Prereq:
     sudo apt install libxdo-dev libxdo3 libespeak1 libespeak-dev espeak
