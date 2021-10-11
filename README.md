@@ -5,7 +5,7 @@ A series of machine learning trigger bots for Counter-Strike: Global Offensive (
 
 ## Latest Release [FGOLD2]
 
-The latest release is a Standalone FNN which will only activate trigger mode when the player is stationary, it detects a stationary state by checking if any of the W,A,S,D keys are currently pressed. This ensures there is reduced spread when the bot fires but also that there is much less missfire when travelling around the map. This solution is not only lighter on the CPU but it is also a much more responsive, in my tests I gauge it sampling at ~120 FPS and because an FNN is more generalised it will not hesitate to fire as often as the CNN. Highly configurable to suite your needs. [`Source`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/blob/main/StandaloneSrc/csgo_gold2_fnn.c) [`Linux Binary`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/raw/main/GOBOT_BINS/DATASET_V3/fgold2)
+The latest release is a Standalone FNN which will only activate trigger mode when the player is stationary, it detects a stationary state by checking if any of the W,A,S,D keys are currently pressed. This ensures there is reduced spread when the bot fires but also that there is much less missfire when travelling around the map. This solution is not only lighter on the CPU but it is also a much more responsive, in my tests I gauge it sampling at ~120 FPS and because an FNN is more generalised it will not hesitate to fire as often as the CNN. Highly configurable to suite your needs. [`Source`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/blob/main/StandaloneSrc/csgo_gold3_fnn.c) [`Linux Binary`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/raw/main/GOBOT_BINS/DATASET_V3/fgold3)
 
 **This one is actually disruptive to online gameplay.** If your CPU can handle it.
 
@@ -21,7 +21,7 @@ The latest release is a Standalone FNN which will only activate trigger mode whe
 L-CTRL + L-ALT = Toggle BOT ON/OFF
 R-CTRL + R-ALT = Toggle HOTKEYS ON/OFF
 
-TAB + 1-6 = Select Single Model Mode (worst to best)
+TAB + 1-7 = Select Single Model Mode (worst to best)
 
 L-SHIFT + 1 = Desperate Mode (all models)
 L-SHIFT + 2 = Confidence Mode (all models averaged)
@@ -68,13 +68,14 @@ Gabe has been very curtious concerning this project, I have noticed a new player
 
 ---
 
-[`GOBOT11_CNN`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT11_CNN) - The best release of the bot so far. Deadly. ([video](https://youtu.be/UMBqk8CAe04))<br>
-[`GOLD2_FNN`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/blob/main/StandaloneSrc/csgo_gold2_fnn.c) - An all-in-one FNN, it's a ruthless killer.<br>
+[`GOBOT12_CNN`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT12_CNN) - The best release of the bot so far. Deadly. ([video](https://youtu.be/UMBqk8CAe04))<br>
+[`GOLD3_FNN`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/blob/main/StandaloneSrc/csgo_gold3_fnn.c) - An all-in-one FNN, it's a ruthless killer.<br>
 
 [`GOBOT_BINS`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT_BINS) - A selection of pre-compiled linux binaries for each incremental release.<br>
 - [`DATASET_V1`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT_BINS/DATASET_V1) - The V1 dataset is 768 samples in size, 302 target samples. _(Counter-Terrorist only)_ ([download](https://github.com/TFCNN/Projects/blob/main/counter_terrorist_dataset_and_weights.zip))<br>
 - [`DATASET_V2`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT_BINS/DATASET_V2) - The V2 dataset is ~750 target samples and ~1900 non-target samples ([download](https://github.com/mrbid/DATASETS/raw/main/CSGO.zip))
 - [`DATASET_V3`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT_BINS/DATASET_V3) - The V3 dataset is ~5,000 samples with an almost even split. ([download](https://github.com/mrbid/DATASETS/raw/main/CSGO3.zip))
+- [`DATASET_V4`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT_BINS/DATASET_V4) - The V3 dataset is ~10,000 samples with an almost even split. ([download](https://github.com/mrbid/DATASETS/raw/main/CSGO4.zip))
 
 ---
 
