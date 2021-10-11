@@ -114,7 +114,7 @@ float processModel(const float* input)
         return doModel(input, &aim_model7[0], 2.3062565, 0.22852926);
 
     // desperate and confidence modes
-    static float rdiv = 1.f / 6.f;
+    static float rdiv = 1.f / 7.f;
     float o = 0.f;
     
     const float m1 = doModel(input, &aim_model1[0], 13.632906f, -0.28265148f);
