@@ -1,7 +1,8 @@
 # CSGO_TENSOR_TRIGGER
 A series of machine learning trigger bots for Counter-Strike: Global Offensive (CS:GO).
 
-**Latest Video:** https://youtu.be/UMBqk8CAe04
+**GOBOT12 Video:** https://youtu.be/R-nCL5zqZBQ
+**GOBOT11 Video:** https://youtu.be/UMBqk8CAe04
 
 ## Latest Release [FGOLD2]
 
@@ -72,7 +73,7 @@ Gabe has been very curtious concerning this project, I have noticed a new player
 
 ---
 
-[`GOBOT12_CNN`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT12_CNN) - The best release of the bot so far. Deadly. ([video](https://youtu.be/UMBqk8CAe04))<br>
+[`GOBOT12_CNN`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT12_CNN) - The best release of the bot so far. Deadly. ([video](https://youtu.be/R-nCL5zqZBQ))<br>
 [`GOLD3_FNN`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/blob/main/StandaloneSrc/csgo_gold3_fnn.c) - An all-in-one FNN, it's a ruthless killer.<br>
 
 [`GOBOT_BINS`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT_BINS) - A selection of pre-compiled linux binaries for each incremental release.<br>
