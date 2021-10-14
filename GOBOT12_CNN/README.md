@@ -1,4 +1,4 @@
-**Video:** _coming soon_
+**Video:** https://youtu.be/R-nCL5zqZBQ
 
 **Walking among giants**<br>
 On [Line 26](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/blob/main/GOBOT12_CNN/Trainer/train.py#L26) of `Trainer/train.py` you can increase the number of kernels/filters per layer. By default this is set to 16 as it's an adequate tradeoff of compute resources to minimal missfire. As you increase this value the compute resources tend to grow at disproportionate rate to the reduction in missfire. Although if you were to increase this to 64, or even 256 or more _(stick to powers of 2)_, you basically end up with, practically no missfire.
