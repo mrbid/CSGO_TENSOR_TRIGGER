@@ -1,7 +1,7 @@
 # CSGO_TENSOR_TRIGGER
 A series of machine learning trigger bots for Counter-Strike: Global Offensive (CS:GO).
 
-**GOBOT12 Video:** https://youtu.be/R-nCL5zqZBQ
+**GOBOT12 Video:** https://youtu.be/R-nCL5zqZBQ<br>
 **GOBOT11 Video:** https://youtu.be/UMBqk8CAe04
 
 ## Latest Release [FGOLD2]
