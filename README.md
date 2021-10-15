@@ -1,7 +1,7 @@
 # CSGO_TENSOR_TRIGGER
 A series of machine learning trigger bots for Counter-Strike: Global Offensive (CS:GO).
 
-Seems this dataset also works great on Counter-Strike: Source and 1.6 / CZ.
+Seems this dataset also works great on CSS and 1.6 / CZ, to be honest it will probably have similar results on any game with humanoid characters.
 
 **GOBOT12 Video:** https://youtu.be/R-nCL5zqZBQ<br>
 **GOBOT11 Video:** https://youtu.be/UMBqk8CAe04
