@@ -1,3 +1,5 @@
+Legacy, check out [GOBOT12](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT12_CNN) for a more up to date release.
+
 **Video:** https://youtu.be/UMBqk8CAe04
 
 **Instructions**<br>
