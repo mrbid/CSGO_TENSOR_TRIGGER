@@ -79,7 +79,7 @@ const float aim_model7[] = {0.34428334,0.007539054,-0.44738615,0.4347524,-0.5641
 
 static inline float sigmoid(const float x)
 {
-    return 1.f / (1.f + exp(-x));
+    return 1.f / (1.f + expf(-x));
 }
 
 float doModel(const float* input, const float* aim_model, const float w, const float b)
@@ -89,7 +89,7 @@ float doModel(const float* input, const float* aim_model, const float w, const f
         o += input[i] * aim_model[i]; // weight
     
     o += aim_model[slall]; // bias
-    o = tanh(o);
+    o = tanhf(o);
 
     return sigmoid((o * w) + b);
 }
