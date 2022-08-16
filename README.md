@@ -1,10 +1,12 @@
 # CSGO_TENSOR_TRIGGER
 A series of machine learning trigger bots for Counter-Strike: Global Offensive (CS:GO).
 
-Seems this dataset also works great on CSS and 1.6 / CZ, to be honest it will probably have similar results on any game with humanoid characters.
+Seems this dataset also work to some extent on CSS and 1.6 / CZ, to be honest it will probably have similar results on any game with humanoid characters.
 
 **GOBOT12 Video:** https://youtu.be/R-nCL5zqZBQ<br>
 **GOBOT11 Video:** https://youtu.be/UMBqk8CAe04
+
+[Jim C. Williams](https://github.com/jcwml) has done a great implementation of this based on [TBVGG3](https://github.com/TFNN/TBVGG3) check it out [here](https://github.com/jcwml/CSGO-Trigger-Bot).
 
 ## Latest Release [FGOLD3]
 
