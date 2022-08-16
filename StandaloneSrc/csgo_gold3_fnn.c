@@ -29,7 +29,6 @@
 #include <time.h>
 #include <sys/time.h>
 #include <X11/Xutil.h>
-#include <signal.h>
 #include <sys/stat.h>
 
 #include <xdo.h>
@@ -398,7 +397,6 @@ void rainbow_line_printf(const char* text)
 int main()
 {
     srand(time(0));
-    signal(SIGPIPE, SIG_IGN);
 
     if(espeak_Initialize(AUDIO_OUTPUT_SYNCH_PLAYBACK, 0, 0, 0) < 0)
         espeak_fail = 1;
