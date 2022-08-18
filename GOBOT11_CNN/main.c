@@ -336,7 +336,7 @@ int main()
     if(espeak_Initialize(AUDIO_OUTPUT_SYNCH_PLAYBACK, 0, 0, 0) < 0)
         espeak_fail = 1;
 
-    printf("\e[1;1H\e[2J");
+    printf("\033[H\033[J");
     rainbow_printf("James William Fletcher (james@voxdsp.com)\n\n");
     rainbow_printf("L-CTRL + L-ALT = Toggle BOT ON/OFF\n");
     rainbow_printf("R-CTRL + R-ALT = Toggle HOTKEYS ON/OFF\n");
