@@ -86,8 +86,4 @@ Gabe has been very courteous concerning this project, I have noticed a new playe
 - [`DATASET_V3`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT_BINS/DATASET_V3) - The V3 dataset is ~5,000 samples with an almost even split. ([download](https://github.com/mrbid/DATASETS/raw/main/CSGO3.zip))
 - [`DATASET_V4`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT_BINS/DATASET_V4) - The V3 dataset is ~10,000 samples with an almost even split. ([download](https://github.com/mrbid/DATASETS/raw/main/CSGO4.zip))
 
----
-
-Terrorising Valve Software since 2003 with no legal repercussions. God bless Gabe.
-
-![Image of Gabe](https://static.wikia.nocookie.net/mlg-parody/images/3/39/Gabe_newell_meme-580x334.jpg/revision/latest/scale-to-width-down/580?cb=20190811113643)
+Latest datasets are now maintained over at [TFNN/DOCS/DATASETS](https://github.com/TFNN/DOCS/tree/main/DATASETS).
