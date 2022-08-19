@@ -1,4 +1,4 @@
-# James William Fletcher (james@voxdsp.com)
+# James William Fletcher (github.com/mrbid)
 #       C to Keras Bridge for Predictor
 #               JULY 2021
 import numpy as np
