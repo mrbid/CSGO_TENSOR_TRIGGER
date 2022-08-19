@@ -1,6 +1,6 @@
 /*
 --------------------------------------------------
-    James William Fletcher (james@voxdsp.com)
+    James William Fletcher (github.com/mrbid)
 --------------------------------------------------
     Auto-shoot / trigger bot for CS:GO.
     https://github.com/tfcnn
