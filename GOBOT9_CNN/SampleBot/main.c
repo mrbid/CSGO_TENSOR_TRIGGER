@@ -1,6 +1,6 @@
 /*
 --------------------------------------------------
-    James William Fletcher (james@voxdsp.com)
+    James William Fletcher (github.com/mrbid)
 --------------------------------------------------
     BMP Dataset collector hard-coded to 96x192.
 
