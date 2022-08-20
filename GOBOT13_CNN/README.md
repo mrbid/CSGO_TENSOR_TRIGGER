@@ -5,3 +5,9 @@ The best way to improve or expand upon this dataset is to enable sample capture 
 It's easier to seperate targets from nontargest than vice-versa because I find my human brain can identify targets faster than it can identify random nontarget images.
 
 Also this process helps to reduce any missfire that exists in the bot, honing in on it's accuracy, because we are adding only samples of nontargets that it throught are targets.
+
+###exec
+```
+cd PredictBot
+./exec.sh
+```
