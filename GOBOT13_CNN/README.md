@@ -7,7 +7,12 @@ It's easier to seperate targets from nontargest than vice-versa because I find m
 Also this process helps to reduce any missfire that exists in the bot, honing in on it's accuracy, because we are adding only samples of nontargets that it throught are targets.
 
 ### prerequisites 
-`sudo apt install xterm espeak`
+```
+sudo apt install clang xterm espeak python3 python3-pip
+sudo pip3 install --upgrade pip
+sudo pip3 install tensorflow-cpu
+sudo pip3 install --upgrade tensorflow-cpu
+```
 
 ### exec
 ```
