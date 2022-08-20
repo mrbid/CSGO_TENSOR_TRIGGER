@@ -72,7 +72,7 @@ This is very similar to the [QUAKE3_TENSOR_TRIGGER](https://github.com/mrbid/QUA
 ---
 
 [`GOBOT13_CNN`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT13_CNN) - The best release so far.<br>
-[`GOLD3_FNN`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/blob/main/StandaloneSrc/csgo_gold3_fnn.c) - An all-in-one FNN, it's a ruthless killer.<br>
+[`GOLD3_FNN`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/blob/main/StandaloneSrc/csgo_gold3_fnn.c) - An all-in-one FNN, good for low power pc's.<br>
 
 [`GOBOT_BINS`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT_BINS) - A selection of pre-compiled linux binaries for each incremental release.<br>
 
