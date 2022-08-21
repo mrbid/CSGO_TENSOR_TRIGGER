@@ -72,7 +72,7 @@ float processModel(const float* input)
     {
         const size_t wbs = r2i * sizeof(float);
         if(fwrite(input, 1, wbs, f) != wbs)
-            return 0;
+            return 0.f;
         fclose(f);
     }
 
@@ -86,12 +86,12 @@ float processModel(const float* input)
     }
 
     // load last result
-    float ret = 0;
+    float ret = 0.f;
     f = fopen("/dev/shm/pred_r.dat", "rb");
     if(f != NULL)
     {
         if(fread(&ret, 1, sizeof(float), f) != sizeof(float))
-            return 0;
+            return 0.f;
         fclose(f);
     }
 
