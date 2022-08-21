@@ -63,6 +63,7 @@ uint hotkeys = 1;
 /***************************************************
    ~~ Neural Network Forward-Pass
 */
+uint64_t microtime();
 float processModel(const float* input)
 {
     // write input to file
@@ -73,6 +74,15 @@ float processModel(const float* input)
         if(fwrite(input, 1, wbs, f) != wbs)
             return 0;
         fclose(f);
+    }
+
+    // prevent old outputs returning
+    static uint64_t stale = 0;
+    if(microtime() - stale > 60000)
+    {
+        remove("/dev/shm/pred_r.dat");
+        stale = microtime();
+        return 0.f;
     }
 
     // load last result
@@ -86,6 +96,7 @@ float processModel(const float* input)
     }
 
     // return
+    stale = microtime();
     return ret;
 }
 
