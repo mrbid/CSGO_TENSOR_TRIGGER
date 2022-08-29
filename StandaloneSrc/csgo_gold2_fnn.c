@@ -12,7 +12,7 @@
     this is a really adequate trade-off, efficient and deadly.
     
     Prereq:
-    sudo apt install libxdo-dev libxdo3 libespeak1 libespeak-dev espeak
+    sudo apt install libxdo-dev libx11-dev libxdo3 libespeak1 libespeak-dev espeak
 
     Compile:
     clang csgo_gold2_fnn.c -Ofast -mavx -mfma -lX11 -lxdo -lespeak -lm -o fgold2
