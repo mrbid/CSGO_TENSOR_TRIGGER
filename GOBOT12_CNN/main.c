@@ -6,7 +6,7 @@
     CS:GO
     
     Prereq:
-    sudo apt install libxdo-dev libxdo3 libespeak1 libespeak-dev espeak
+    sudo apt install libx11-dev libxdo-dev libxdo3 libespeak1 libespeak-dev espeak
 
     Compile:
     clang main.c -Ofast -mavx -mfma -lX11 -lxdo -lespeak -lm -o aim
