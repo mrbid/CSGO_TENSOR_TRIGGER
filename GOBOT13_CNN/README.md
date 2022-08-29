@@ -8,7 +8,7 @@ Also this process helps to reduce any missfire that exists in the bot, honing in
 
 ### prerequisites 
 ```
-sudo apt install clang xterm espeak python3 python3-pip
+sudo apt install libx11-dev clang xterm espeak python3 python3-pip
 sudo pip3 install --upgrade pip
 sudo pip3 install tensorflow-cpu
 sudo pip3 install --upgrade tensorflow-cpu
