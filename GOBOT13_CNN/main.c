@@ -252,21 +252,22 @@ void processScanArea(Window w)
     {
         for(int x = 0; x < r0; x++)
         {
-            XColor c;
-            c.pixel = XGetPixel(img, x, y);
-            XQueryColor(d, map, &c);
+            const unsigned long pixel = XGetPixel(img, x, y);
+            const unsigned char sr = (pixel & img->red_mask) >> 16;
+            const unsigned char sg = (pixel & img->green_mask) >> 8;
+            const unsigned char sb = pixel & img->blue_mask;
 
 #if PRELOG_SAVESAMPLE == 1
             // scale ushort to uchar (if you don't compile with -Ofast this can cause a division by zero)
-            rgbbytes[i]   = (unsigned char)(c.red / 257);
-            rgbbytes[i+1] = (unsigned char)(c.green / 257);
-            rgbbytes[i+2] = (unsigned char)(c.blue / 257);
+            rgbbytes[i]   = (unsigned char)sr;
+            rgbbytes[i+1] = (unsigned char)sg;
+            rgbbytes[i+2] = (unsigned char)sb;
 #endif
 
             // 0-1 norm
-            input[i]   = ((float)c.red)   / 65535.f;
-            input[i+1] = ((float)c.green) / 65535.f;
-            input[i+2] = ((float)c.blue)  / 65535.f;
+            input[i]   = sr * 0.003921568859f; // / 255.f
+            input[i+1] = sg * 0.003921568859f;
+            input[i+2] = sb * 0.003921568859f;
 
             //
             i += 3;
