@@ -258,7 +258,6 @@ void processScanArea(Window w)
             const unsigned char sb = pixel & img->blue_mask;
 
 #if PRELOG_SAVESAMPLE == 1
-            // scale ushort to uchar (if you don't compile with -Ofast this can cause a division by zero)
             rgbbytes[i]   = (unsigned char)sr;
             rgbbytes[i+1] = (unsigned char)sg;
             rgbbytes[i+2] = (unsigned char)sb;
