@@ -57,8 +57,8 @@ uint hotkeys = 1;
 #define SCAN_DELAY 1000             // scan frequency delay in microseconds
 #define ACTIVATION_SENITIVITY 0.9f  // minimum activation sensitivity to fire a shot
 #define REPEAT_ACTIVATION 0         // how many positive activations in a row before firing a shot
-#define FIRE_RATE_LIMIT_MS 300      // delay between firing shots in milliseconds
-#define TRIGGER_RATE_LIMIT_MS 50    // delay between firing shots between TRIGGER iterations in milliseconds
+#define FIRE_RATE_LIMIT_MS 100      // delay between firing shots in milliseconds
+#define TRIGGER_RATE_LIMIT_MS 30    // delay between firing shots between TRIGGER iterations in milliseconds
 
 /***************************************************
    ~~ Neural Network Forward-Pass
