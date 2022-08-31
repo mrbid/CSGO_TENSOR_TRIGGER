@@ -45,7 +45,7 @@ GC gc = 0;
 #define PRELOG_SAVESAMPLE 0 // set this to 0 to offset some scanning load to the saving operation
 char targets_dir[256];
 unsigned char rgbbytes[r2i] = {0};
-uint sps = 0; // for SPSF_G
+uint sps = 0; // for SPS
 
 // settings
 uint enable = 0;
