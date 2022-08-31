@@ -21,8 +21,8 @@ np.set_printoptions(threshold=sys.maxsize)
 
 # hyperparameters
 project = "aim_model"
-training_iterations = 128
-filter_resolution = 16
+training_iterations = 512
+filter_resolution = 8
 batches = 24
 
 tc = len(glob.glob('target/*'))     # target sample count/length
@@ -100,12 +100,12 @@ if isdir(project):
     nontargets_x = []
     nontargets_y = []
     if isfile(project + "/nontargets_x.npy"):
-        print("Loading nontargets_x dataset..")
+        print("Loading nontargets_x dataset.. (" + str(ntc) + ")")
         st = time_ns()
         nontargets_x = np.load(project + "/nontargets_x.npy")
-        print("Done in {:.2f}".format((time_ns()-st)/1e+9) + " seconds.")
+        print("Done in {:.2f}".format((time_ns()-st)/1e+9) + " seconds. (" + "{:.0f}".format(nontargets_x.size/2352) + ")")
     else:
-        print("Creating nontargets_x dataset..")
+        print("Creating nontargets_x dataset.. (" + str(ntc) + ")")
         st = time_ns()
         files = glob.glob("nontarget/*")
         for f in files:
@@ -134,12 +134,12 @@ if isdir(project):
     targets_x = []
     targets_y = []
     if isfile(project + "/targets_x.npy"):
-        print("Loading nontargets_x dataset..")
+        print("Loading targets_x dataset.. (" + str(tc) + ")")
         st = time_ns()
         targets_x = np.load(project + "/targets_x.npy")
-        print("Done in {:.2f}".format((time_ns()-st)/1e+9) + " seconds.")
+        print("Done in {:.2f}".format((time_ns()-st)/1e+9) + " seconds. (" + "{:.0f}".format(targets_x.size/2352) + ")")
     else:
-        print("Creating targets_x dataset..")
+        print("Creating targets_x dataset.. (" + str(tc) + ")")
         st = time_ns()
         files = glob.glob("target/*")
         for f in files:
