@@ -13,6 +13,7 @@
 #include <math.h>
 #include <time.h>
 #include <string.h>
+#include <unistd.h>
 
 #include <unistd.h>
 #include <stdint.h>
@@ -44,6 +45,7 @@ GC gc = 0;
 #define PRELOG_SAVESAMPLE 0 // set this to 0 to offset some scanning load to the saving operation
 char targets_dir[256];
 unsigned char rgbbytes[r2i] = {0};
+uint sps = 0; // for SPS
 
 // settings
 uint enable = 0;
@@ -64,18 +66,9 @@ uint hotkeys = 1;
    ~~ Neural Network Forward-Pass
 */
 uint64_t microtime();
+void processScanArea(Window w);
 float processModel(const float* input)
 {
-    // write input to file
-    FILE *f = fopen("/dev/shm/pred_input.dat", "wb");
-    if(f != NULL)
-    {
-        const size_t wbs = r2i * sizeof(float);
-        if(fwrite(input, 1, wbs, f) != wbs)
-            return 0.f;
-        fclose(f);
-    }
-
     // prevent old outputs returning
     static uint64_t stale = 0;
     if(microtime() - stale > 60000)
@@ -87,12 +80,44 @@ float processModel(const float* input)
 
     // load last result
     float ret = 0.f;
-    f = fopen("/dev/shm/pred_r.dat", "rb");
+    FILE* f = fopen("/dev/shm/pred_r.dat", "rb");
     if(f != NULL)
     {
         if(fread(&ret, 1, sizeof(float), f) != sizeof(float))
             return 0.f;
         fclose(f);
+        remove("/dev/shm/pred_r.dat");
+
+        // grab a new sceen buffer
+        processScanArea(twin);
+        
+        // write sceen buffer / nn input to file
+        f = fopen("/dev/shm/pred_input.dat", "wb");
+        if(f != NULL)
+        {
+            const size_t wbs = r2i * sizeof(float);
+            if(fwrite(input, 1, wbs, f) != wbs)
+                return 0.f;
+            fclose(f);
+        }
+    }
+    else
+    {
+        if(access("/dev/shm/pred_input.dat", F_OK) != 0)
+        {
+            // grab a new sceen buffer
+            processScanArea(twin);
+            
+            // write sceen buffer / nn input to file
+            f = fopen("/dev/shm/pred_input.dat", "wb");
+            if(f != NULL)
+            {
+                const size_t wbs = r2i * sizeof(float);
+                if(fwrite(input, 1, wbs, f) != wbs)
+                    return 0.f;
+                fclose(f);
+            }
+        }
     }
 
     // return
@@ -275,6 +300,9 @@ void processScanArea(Window w)
 
     // free image block
     XFree(img);
+
+    // increment SPS
+    sps++;
 }
 
 void reprint()
@@ -408,21 +436,14 @@ int main(int argc, char *argv[])
         // toggle bot on/off
         if(enable == 1)
         {
-            // print samples per second when pressed
-            if(key_is_pressed(XK_H))
+            // always tracks sps
+            static uint64_t st = 0;
+            if(microtime() - st >= 1000000)
             {
-                static uint64_t st = 0;
-                static uint sc = 0;
-                processScanArea(twin);
-                const float ret = processModel(&input[0]);
-                sc++;
-                if(microtime() - st >= 1000000)
-                {
-                    printf("\e[36mSPS: %u\e[0m\n", sc);
-                    sc = 0;
-                    st = microtime();
-                }
-                continue;
+                if(key_is_pressed(XK_H))
+                    printf("\e[36mSPS: %u\e[0m\n", sps);
+                sps = 0;
+                st = microtime();
             }
 
             // input toggle
@@ -505,7 +526,6 @@ int main(int argc, char *argv[])
             
             if(hotkeys == 1 && key_is_pressed(XK_G)) // print activation when pressed
             {
-                processScanArea(twin);
                 const float ret = processModel(&input[0]);
                 if(ret > ACTIVATION_SENITIVITY)
                 {
@@ -539,7 +559,6 @@ int main(int argc, char *argv[])
 
                 if(key_is_pressed(XK_W) == 0 && key_is_pressed(XK_A) == 0 && key_is_pressed(XK_S) == 0 && key_is_pressed(XK_D) == 0 && key_is_pressed(XK_Shift_L) == 0)
                 {
-                    processScanArea(twin);
                     const float activation = processModel(&input[0]);
 
                     // passed minimum activation?
