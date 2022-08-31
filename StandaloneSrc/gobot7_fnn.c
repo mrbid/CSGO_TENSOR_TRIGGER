@@ -268,7 +268,7 @@ int main(int argc, char *argv[])
 
     //
 
-    printf("James William Fletcher (james@voxdsp.com)\n\n");
+    printf("James William Fletcher (github.com/mrbid)\n\n");
     printf("Hotkeys:\n");
     printf("L-CTRL + L-ALT = Toggle BOT ON/OFF\n");
     printf("R-CTRL + R-ALT = Toggle HOTKEYS ON/OFF\n");
