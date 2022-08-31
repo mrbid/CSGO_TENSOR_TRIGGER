@@ -45,7 +45,7 @@ GC gc = 0;
 #define PRELOG_SAVESAMPLE 0 // set this to 0 to offset some scanning load to the saving operation
 char targets_dir[256];
 unsigned char rgbbytes[r2i] = {0};
-uint sps = 0; // for SPS
+uint sps = 0; // for SPSF_G
 
 // settings
 uint enable = 0;
@@ -67,7 +67,7 @@ uint hotkeys = 1;
 */
 uint64_t microtime();
 void processScanArea(Window w);
-float processModel(const float* input)
+float processModel()
 {
     // prevent old outputs returning
     static uint64_t stale = 0;
@@ -97,7 +97,7 @@ float processModel(const float* input)
         {
             const size_t wbs = r2i * sizeof(float);
             if(fwrite(input, 1, wbs, f) != wbs)
-                return 0.f;
+                return ret;
             fclose(f);
         }
     }
@@ -526,24 +526,27 @@ int main(int argc, char *argv[])
             
             if(hotkeys == 1 && key_is_pressed(XK_G)) // print activation when pressed
             {
-                const float ret = processModel(&input[0]);
-                if(ret > ACTIVATION_SENITIVITY)
+                const float ret = processModel();
+                if(ret > 0.f)
                 {
-                    printf("\e[93mA: %f\e[0m\n", ret);
-                    XSetForeground(d, gc, 65280);
-                    XDrawRectangle(d, event.xbutton.window, gc, x-rd2-1, y-rd2-1, r0+2, r0+2);
-                    XSetForeground(d, gc, 0);
-                    XDrawRectangle(d, event.xbutton.window, gc, x-rd2-2, y-rd2-2, r0+4, r0+4);
-                    XFlush(d);
-                }
-                else
-                {
-                    printf("\e[0mA: %f\n", ret);
-                    XSetForeground(d, gc, 16711680);
-                    XDrawRectangle(d, event.xbutton.window, gc, x-rd2-1, y-rd2-1, r0+2, r0+2);
-                    XSetForeground(d, gc, 0);
-                    XDrawRectangle(d, event.xbutton.window, gc, x-rd2-2, y-rd2-2, r0+4, r0+4);
-                    XFlush(d);
+                    if(ret > ACTIVATION_SENITIVITY)
+                    {
+                        printf("\e[93mA: %f\e[0m\n", ret);
+                        XSetForeground(d, gc, 65280);
+                        XDrawRectangle(d, event.xbutton.window, gc, x-rd2-1, y-rd2-1, r0+2, r0+2);
+                        XSetForeground(d, gc, 0);
+                        XDrawRectangle(d, event.xbutton.window, gc, x-rd2-2, y-rd2-2, r0+4, r0+4);
+                        XFlush(d);
+                    }
+                    else
+                    {
+                        printf("\e[0mA: %f\n", ret);
+                        XSetForeground(d, gc, 16711680);
+                        XDrawRectangle(d, event.xbutton.window, gc, x-rd2-1, y-rd2-1, r0+2, r0+2);
+                        XSetForeground(d, gc, 0);
+                        XDrawRectangle(d, event.xbutton.window, gc, x-rd2-2, y-rd2-2, r0+4, r0+4);
+                        XFlush(d);
+                    }
                 }
             }
             else
@@ -559,7 +562,7 @@ int main(int argc, char *argv[])
 
                 if(key_is_pressed(XK_W) == 0 && key_is_pressed(XK_A) == 0 && key_is_pressed(XK_S) == 0 && key_is_pressed(XK_D) == 0 && key_is_pressed(XK_Shift_L) == 0)
                 {
-                    const float activation = processModel(&input[0]);
+                    const float activation = processModel();
 
                     // passed minimum activation?
                     if(activation > ACTIVATION_SENITIVITY)
