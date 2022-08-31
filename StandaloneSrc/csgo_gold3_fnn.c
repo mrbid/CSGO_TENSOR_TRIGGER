@@ -402,7 +402,7 @@ int main()
         espeak_fail = 1;
 
     printf("\033[H\033[J");
-    rainbow_printf("James William Fletcher (james@voxdsp.com)\n\n");
+    rainbow_printf("James William Fletcher (github.com/mrbid)\n\n");
     rainbow_printf("L-CTRL + L-ALT = Toggle BOT ON/OFF\n");
     rainbow_printf("R-CTRL + R-ALT = Toggle HOTKEYS ON/OFF\n\n");
     rainbow_printf("TAB + 1-7 = Select Single Model Mode (worst to best)\n\n");
