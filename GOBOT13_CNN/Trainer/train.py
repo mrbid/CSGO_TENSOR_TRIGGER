@@ -22,7 +22,7 @@ np.set_printoptions(threshold=sys.maxsize)
 # hyperparameters
 project = "aim_model"
 training_iterations = 512
-filter_resolution = 8
+filter_resolution = 16
 batches = 24
 
 tc = len(glob.glob('target/*'))     # target sample count/length
