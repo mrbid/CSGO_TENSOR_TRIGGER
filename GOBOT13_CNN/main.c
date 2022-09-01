@@ -355,6 +355,10 @@ void reprint()
 int main(int argc, char *argv[])
 {
     srand(time(0));
+    
+    // wipe old data
+    remove("/dev/shm/pred_r.dat");
+    remove("/dev/shm/pred_input.dat");
 
     // intro
     reprint();
