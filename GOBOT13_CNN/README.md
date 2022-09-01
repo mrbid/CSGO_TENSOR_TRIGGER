@@ -22,3 +22,5 @@ cd PredictBot
 
 ### note
 In [train.py](Trainer/train.py) on lines [113](Trainer/train.py#L113) and [147](Trainer/train.py#L147) I am using [img_to_array()](https://www.tensorflow.org/api_docs/python/tf/keras/utils/img_to_array) technically I should be passing the parameter `data_format='channels_first'` or `channels_last` and then supplying the input data in that array byte format in [main.c](main.c). However I supply the input data as interleaved RGB. It doesn't make a huge difference in the end result, although technically it is quite a difference, but, for the sake of being exact, this is what you should do. Otherwise you would need to use [pred2.py](PredictBot/pred2.py) and your input data would now just be a ppm image using the `writePPM()` function in [main.c](main.c) but this method runs at 20 FPS while supplying an input array pre-processed from `main.c` runs at 30-40 FPS.
+
+Rule of thumb is that, it's fine how it currently is. If I thought it performed better the "correct way" I would supply that solution and not this one.
