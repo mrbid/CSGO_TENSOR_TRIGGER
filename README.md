@@ -24,8 +24,6 @@ The bot generally regulates your rate of fire for you but if you need more contr
 
 This repository holds the best releases from a series of articles I made that document my research into making a CS:GO auto-trigger bot using machine learning: https://james-william-fletcher.medium.com/list/fps-machine-learning-autoshoot-bot-for-csgo-100153576e93
 
-This is very similar to the [QUAKE3_TENSOR_TRIGGER](https://github.com/mrbid/QUAKE3_TENSOR_TRIGGER) project only that the sample normalisation was not 0-1 scaled but mean normalised up to DATASET_V2 _(apart from the GOLD_FNN)_ which then switched to using 0-1 scaled normalisation for bots using DATASET_V3+.
-
 ---
 
 [`GOBOT15_CNN`](https://github.com/mrbid/CSGO_TENSOR_TRIGGER/tree/main/GOBOT15_CNN) - The best release so far.<br>
