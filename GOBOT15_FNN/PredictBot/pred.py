@@ -25,7 +25,7 @@ while True:
                                 data = np.fromfile(f, dtype=np.float32)
                                 remove("/dev/shm/pred_input.dat")
                                 if data.size == input_size:
-                                        input = np.reshape(data, [-1, 28,28,1])
+                                        input = np.reshape(data, [-1, input_size])
                                         r = model.predict(input, verbose=0)
                                         with open("/dev/shm/pred_r.dat", "wb") as f2:
                                                 f2.write(pack('f', r))

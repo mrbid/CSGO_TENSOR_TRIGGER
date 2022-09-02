@@ -6,7 +6,7 @@ import glob
 import numpy as np
 from tensorflow import keras
 from keras.models import Sequential
-from keras import layers
+from keras.layers import Dense
 from time import time_ns
 from sys import exit
 from os.path import isdir
@@ -16,20 +16,20 @@ from os import mkdir
 # disable warnings
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
+# train only on CPU?
+os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
+
 # print everything / no truncations
 np.set_printoptions(threshold=sys.maxsize)
 
 # hyperparameters
+inputsize = 784
 project = "aim_model"
-training_iterations = 128
-filter_resolution = 16
+training_iterations = 333
+activator = 'tanh'
+hidden_layers = 0
+layer_units = 8
 batches = 24
-use_bias = True
-use_padding = False
-
-pad = "valid"
-if use_padding == True:
-    pad = "same"
 
 tc =  len(glob.glob('target/*'))    # target sample count/length
 ntc = len(glob.glob('nontarget/*')) # non-target sample count/length
@@ -55,63 +55,17 @@ def normaliseImage(arr):
             newarr.append(0)
     return newarr
 
-# def featurewisenorm(a):
-#     layer = keras.layers.experimental.preprocessing.Normalization()
-#     layer.adapt(a)
-#     return layer(a).numpy()
-
-# def meanNormaliseImage(arr):
-#     arr = arr.flatten()
-#     newarr = []
-#     len, ofs, rm, gm, bm, rh, gh, bh = 0,0,0,0,0,0,0,0
-#     rl, gl, bl = 99999999999999,99999999999999,99999999999999
-#     for x in arr:
-#         if ofs == 0:
-#             if x > rh: rh = x
-#             if x < rl: rl = x
-#             rm += x
-#         elif ofs == 1:
-#             if x > gh: gh = x
-#             if x < gl: gl = x
-#             gm += x
-#         elif ofs == 2:
-#             if x > bh: bh = x
-#             if x < bl: bl = x
-#             bm += x
-#         len += 1
-#         ofs += 1
-#         if ofs == 3: ofs = 0
-#     clen = len/3
-#     rm /= clen
-#     gm /= clen
-#     bm /= clen
-#     rmd = rh-rl
-#     gmd = gh-gl
-#     bmd = bh-bl
-#     ofs, len = 0,0
-#     for x in arr:
-#         if ofs == 0:
-#             newarr.append( ((x-rm)+1e-7) / (rmd+1e-7) )
-#         elif ofs == 1:
-#             newarr.append( ((x-gm)+1e-7) / (gmd+1e-7) )
-#         elif ofs == 2:
-#             newarr.append( ((x-bm)+1e-7) / (bmd+1e-7) )
-#         len += 1
-#         ofs += 1
-#         if ofs == 3: ofs = 0
-#     return newarr
-
 # load training data
 if isdir(project):
     nontargets_x = []
     nontargets_y = []
     if isfile(project + "/nontargets_x.npy"):
-        print("Loading nontargets_x dataset.. (" + str(ntc) + ")")
+        print("Loading nontargets_x dataset..")
         st = time_ns()
         nontargets_x = np.load(project + "/nontargets_x.npy")
-        print("Done in {:.2f}".format((time_ns()-st)/1e+9) + " seconds. (" + "{:.0f}".format(nontargets_x.size/2352) + ")")
+        print("Done in {:.2f}".format((time_ns()-st)/1e+9) + " seconds.")
     else:
-        print("Creating nontargets_x dataset.. (" + str(ntc) + ")")
+        print("Creating nontargets_x dataset..")
         st = time_ns()
         files = glob.glob("nontarget/*")
         for f in files:
@@ -122,7 +76,7 @@ if isdir(project):
             nontargets_x.append(normaliseImage(arr))
             #print("after:", nontargets_x)
             #exit()
-        nontargets_x = np.reshape(nontargets_x, [ntc, 28,28,1])
+        nontargets_x = np.reshape(nontargets_x, [ntc, inputsize])
         np.save(project + "/nontargets_x.npy", nontargets_x)
         print("Done in {:.2f}".format((time_ns()-st)/1e+9) + " seconds.")
     if isfile(project + "/nontargets_y.npy"):
@@ -140,12 +94,12 @@ if isdir(project):
     targets_x = []
     targets_y = []
     if isfile(project + "/targets_x.npy"):
-        print("Loading targets_x dataset.. (" + str(tc) + ")")
+        print("Loading targets_x dataset..")
         st = time_ns()
         targets_x = np.load(project + "/targets_x.npy")
-        print("Done in {:.2f}".format((time_ns()-st)/1e+9) + " seconds. (" + "{:.0f}".format(targets_x.size/2352) + ")")
+        print("Done in {:.2f}".format((time_ns()-st)/1e+9) + " seconds.")
     else:
-        print("Creating targets_x dataset.. (" + str(tc) + ")")
+        print("Creating targets_x dataset..")
         st = time_ns()
         files = glob.glob("target/*")
         for f in files:
@@ -153,7 +107,7 @@ if isdir(project):
             arr = keras.preprocessing.image.img_to_array(img)
             arr = np.array(arr)
             targets_x.append(normaliseImage(arr))
-        targets_x = np.reshape(targets_x, [tc, 28,28,1])
+        targets_x = np.reshape(targets_x, [tc, inputsize])
         np.save(project + "/targets_x.npy", targets_x)
         print("Done in {:.2f}".format((time_ns()-st)/1e+9) + " seconds.")
     if isfile(project + "/targets_y.npy"):
@@ -193,17 +147,14 @@ shuffle_in_unison(train_x, train_y)
 
 
 # construct neural network
-model = Sequential([
-        keras.Input(shape=(28, 28, 1)),
-        layers.Conv2D(filter_resolution, kernel_size=(3, 3), padding=pad, use_bias=use_bias, activation="relu"),
-        layers.MaxPooling2D(pool_size=(2, 2)),
-        layers.Conv2D(filter_resolution*2, kernel_size=(3, 3), padding=pad, use_bias=use_bias, activation="relu"),
-        layers.MaxPooling2D(pool_size=(2, 2)),
-        layers.Conv2D(filter_resolution*4, kernel_size=(3, 3), padding=pad, use_bias=use_bias, activation="relu"),
-        layers.GlobalAveragePooling2D(),
-        layers.Flatten(),
-        layers.Dense(1, activation="sigmoid"),
-])
+model = Sequential()
+model.add(Dense(layer_units, activation=activator, input_dim=inputsize))
+
+if hidden_layers > 0:
+    for x in range(hidden_layers):
+        model.add(Dense(layer_units, activation=activator))
+
+model.add(Dense(1, activation='sigmoid'))
 
 # output summary
 model.summary()
@@ -215,17 +166,16 @@ model.compile(optimizer='adam', loss='mean_squared_error')
 # train network
 st = time_ns()
 model.fit(train_x, train_y, epochs=training_iterations, batch_size=batches)
-# model.fit(x_train, y_train, epochs=training_iterations, batch_size=batches, validation_data=(x_val, y_val))
 timetaken = (time_ns()-st)/1e+9
 print("")
 print("Time Taken:", "{:.2f}".format(timetaken), "seconds")
 
 
-# save model
+# save info
 if not isdir(project):
     mkdir(project)
 if isdir(project):
-    # save model
+    # save keras model
     model.save("../PredictBot/keras_model")
 
     # save json model
@@ -240,41 +190,47 @@ if isdir(project):
     # save flat weights
     for layer in model.layers:
         if layer.get_weights() != []:
-            f = open(project + "/" + layer.name + "_full.txt", "w")
-            if f:
-                f.write(str(layer.get_weights()))
-            f.close()
             np.savetxt(project + "/" + layer.name + ".csv", layer.get_weights()[0].flatten(), delimiter=",") # weights
-            if use_bias == True:
-                np.savetxt(project + "/" + layer.name + "_bias.csv", layer.get_weights()[1].flatten(), delimiter=",") # biases
+            np.savetxt(project + "/" + layer.name + "_bias.csv", layer.get_weights()[1].flatten(), delimiter=",") # bias
 
-    # save CNN weights as C header
+    # save weights for C array
+    print("")
+    print("Exporting weights...")
+    li = 0
     f = open(project + "/" + project + "_layers.h", "w")
+    f.write("#ifndef " + project + "_layers\n#define " + project + "_layers\n\n")
     if f:
-        f.write("#ifndef " + project + "_layers\n#define " + project + "_layers\n\n")
         for layer in model.layers:
+            total_layer_weights = layer.get_weights()[0].flatten().shape[0]
+            total_layer_units = layer.units
+            layer_weights_per_unit = total_layer_weights / total_layer_units
+            #print(layer.get_weights()[0].flatten().shape)
+            #print(layer.units)
+            print("+ Layer:", li)
+            print("Total layer weights:", total_layer_weights)
+            print("Total layer units:", total_layer_units)
+            print("Weights per unit:", int(layer_weights_per_unit))
+
+            f.write("const float " + project + "_layer" + str(li) + "[] = {")
             isfirst = 0
-            weights = layer.get_weights()
-            if weights != []:
-                f.write("const float " + layer.name + "[] = {")
-                for w in weights[0].flatten():
+            wc = 0
+            bc = 0
+            if layer.get_weights() != []:
+                for weight in layer.get_weights()[0].flatten():
+                    wc += 1
                     if isfirst == 0:
-                        f.write(str(w))
+                        f.write(str(weight))
                         isfirst = 1
                     else:
-                        f.write("," + str(w))
-                f.write("};\n\n")
-                if use_bias == True:
-                    isfirst = 0
-                    f.write("const float " + layer.name + "_bias[] = {")
-                    for w in weights[1].flatten():
-                        if isfirst == 0:
-                            f.write(str(w))
-                            isfirst = 1
-                        else:
-                            f.write("," + str(w))
-                    f.write("};\n\n")
-        f.write("#endif\n")
+                        f.write("," + str(weight))
+                    if wc == layer_weights_per_unit:
+                        f.write(", /* bias */ " + str(layer.get_weights()[1].flatten()[bc]))
+                        #print("bias", str(layer.get_weights()[1].flatten()[bc]))
+                        wc = 0
+                        bc += 1
+            f.write("};\n\n")
+            li += 1
+    f.write("#endif\n")
     f.close()
 
 
@@ -299,6 +255,10 @@ avgfailpnt = (100/ntc)*cnzpnt
 outlierspnt = ntc - int(cnzpnts + cnzpnt)
 
 print("training_iterations:", training_iterations)
+print("activator:", activator)
+if hidden_layers > 0:
+    print("layers:", hidden_layers)
+print("layer_units:", layer_units)
 print("batches:", batches)
 print("")
 print("target:", "{:.0f}".format(np.sum(pt)) + "/" + str(tc))
