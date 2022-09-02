@@ -1,1 +1,1 @@
-clang main.c -Ofast -lX11 -lxdo -lespeak -lm -o PredictBot/aim
+clang main.c -Ofast -lX11 -lm -o PredictBot/aim
