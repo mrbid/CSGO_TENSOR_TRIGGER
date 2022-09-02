@@ -1,8 +1,6 @@
 #ifndef csgo_mrbid_net
 #define csgo_mrbid_net
 
-#include <stdio.h>
-
 /*
     James William Fletcher
     github.com/mrbid - September 2022
