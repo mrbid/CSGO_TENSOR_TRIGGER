@@ -254,9 +254,6 @@ void processScanArea(Window w)
     if(img == NULL)
         return;
 
-    // colour map
-    const Colormap map = XDefaultColormap(d, si);
-
     // extract colour information
     int i = 0;
     for(int y = 0; y < r0; y++)
