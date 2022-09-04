@@ -550,7 +550,7 @@ int main(int argc, char *argv[])
                                 char name[32];
                                 sprintf(name, "%s/%i.pgm", targets_dir, rand());
                                 writePGM(name, &pgmbytes[0]);
-                                printf("SAVED: %s\n", name);
+                                printf("\e[38;5;123mSAVED: %s\n", name);
                             }
 
                             // fire off as many shots as we need to
