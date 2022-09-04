@@ -512,7 +512,8 @@ int main(int argc, char *argv[])
                     }
                     else
                     {
-                        printf("\e[0mA: %f\n", ret);
+                        const uint s = (uint)((1.f-ret)*255.f);
+                        printf("\x1b[38;2;255;%u;%um A: %f\n", s, s, ret);
                         XSetForeground(d, gc, 16711680);
                         XDrawRectangle(d, event.xbutton.window, gc, x-rd2-1, y-rd2-1, r0+2, r0+2);
                         XSetForeground(d, gc, 0);
