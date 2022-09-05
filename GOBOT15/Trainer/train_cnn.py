@@ -22,9 +22,9 @@ np.set_printoptions(threshold=sys.maxsize)
 # hyperparameters
 project = "aim_model_cnn"
 training_iterations = 128
-filter_resolution = 2
+filter_resolution = 16
 batches = 24
-use_bias = False
+use_bias = True
 use_padding = False
 
 pad = "valid"
