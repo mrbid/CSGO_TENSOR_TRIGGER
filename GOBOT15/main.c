@@ -129,7 +129,7 @@ float processModel()
 uint qRand(const float min, const float max)
 {
     static float rndmax = 1.f/(float)RAND_MAX;
-    return ( ( ( ((float)rand()) * rndmax ) * (max-min) ) + min ) + 0.5f;
+    return (((float)rand()) * rndmax) * (max-min) + min;
 }
 
 void writePGM(const char* file, const unsigned char* data)
