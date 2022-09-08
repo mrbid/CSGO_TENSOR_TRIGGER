@@ -22,7 +22,7 @@ np.set_printoptions(threshold=sys.maxsize)
 # hyperparameters
 project = "aim_model_cnn"
 training_iterations = 128
-filter_resolution = 16
+filter_resolution = 96
 batches = 24
 use_bias = True
 use_padding = False
@@ -109,7 +109,7 @@ if isdir(project):
         print("Loading nontargets_x dataset.. (" + str(ntc) + ")")
         st = time_ns()
         nontargets_x = np.load(project + "/nontargets_x.npy")
-        print("Done in {:.2f}".format((time_ns()-st)/1e+9) + " seconds. (" + "{:.0f}".format(nontargets_x.size/2352) + ")")
+        print("Done in {:.2f}".format((time_ns()-st)/1e+9) + " seconds. (" + "{:.0f}".format(nontargets_x.size/784) + ")")
     else:
         print("Creating nontargets_x dataset.. (" + str(ntc) + ")")
         st = time_ns()
@@ -143,7 +143,7 @@ if isdir(project):
         print("Loading targets_x dataset.. (" + str(tc) + ")")
         st = time_ns()
         targets_x = np.load(project + "/targets_x.npy")
-        print("Done in {:.2f}".format((time_ns()-st)/1e+9) + " seconds. (" + "{:.0f}".format(targets_x.size/2352) + ")")
+        print("Done in {:.2f}".format((time_ns()-st)/1e+9) + " seconds. (" + "{:.0f}".format(targets_x.size/784) + ")")
     else:
         print("Creating targets_x dataset.. (" + str(tc) + ")")
         st = time_ns()

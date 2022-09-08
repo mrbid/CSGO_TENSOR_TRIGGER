@@ -63,7 +63,7 @@ if isdir(project):
         print("Loading nontargets_x dataset..")
         st = time_ns()
         nontargets_x = np.load(project + "/nontargets_x.npy")
-        print("Done in {:.2f}".format((time_ns()-st)/1e+9) + " seconds.")
+        print("Done in {:.2f}".format((time_ns()-st)/1e+9) + " seconds. (" + "{:.0f}".format(nontargets_x.size/784) + ")")
     else:
         print("Creating nontargets_x dataset..")
         st = time_ns()
@@ -97,7 +97,7 @@ if isdir(project):
         print("Loading targets_x dataset..")
         st = time_ns()
         targets_x = np.load(project + "/targets_x.npy")
-        print("Done in {:.2f}".format((time_ns()-st)/1e+9) + " seconds.")
+        print("Done in {:.2f}".format((time_ns()-st)/1e+9) + " seconds. (" + "{:.0f}".format(targets_x.size/784) + ")")
     else:
         print("Creating targets_x dataset..")
         st = time_ns()
