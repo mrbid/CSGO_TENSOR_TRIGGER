@@ -18,6 +18,13 @@ sudo pip3 install tensorflow-cpu
 sudo pip3 install --upgrade tensorflow-cpu
 ```
 
+### onnx
+```
+Opsets: https://onnxruntime.ai/docs/reference/compatibility.html
+sudo python3 -m pip install tf2onnx
+sudo python3 -m pip install onnxruntime
+```
+
 ### exec
 ```
 ./RUN_CNN.sh
