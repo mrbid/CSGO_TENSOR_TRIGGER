@@ -82,7 +82,10 @@ float processModel()
     if(f != NULL)
     {
         if(fread(&ret, 1, sizeof(float), f) != sizeof(float))
+        {
+            fclose(f);
             return 0.f;
+        }
         fclose(f);
         remove("/dev/shm/pred_r.dat");
 
@@ -95,7 +98,10 @@ float processModel()
         {
             const size_t wbs = r2 * sizeof(float);
             if(fwrite(input, 1, wbs, f) != wbs)
+            {
+                fclose(f);
                 return ret;
+            }
             fclose(f);
         }
     }
@@ -112,7 +118,10 @@ float processModel()
             {
                 const size_t wbs = r2 * sizeof(float);
                 if(fwrite(input, 1, wbs, f) != wbs)
+                {
+                    fclose(f);
                     return 0.f;
+                }
                 fclose(f);
             }
         }
