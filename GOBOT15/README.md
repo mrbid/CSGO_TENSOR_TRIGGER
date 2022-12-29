@@ -16,11 +16,6 @@ sudo apt install clang xterm espeak python3 python3-pip libx11-dev
 sudo python3 -m pip install --upgrade pip
 sudo python3 -m pip install tensorflow-cpu
 sudo python3 -m pip install --upgrade tensorflow-cpu
-```
-
-### onnx
-```
-Opsets: https://onnxruntime.ai/docs/reference/compatibility.html
 sudo python3 -m pip install tf2onnx
 sudo python3 -m pip install onnxruntime
 ```
