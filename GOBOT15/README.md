@@ -13,9 +13,9 @@ Collecting dataset samples can be as simple as just letting a match of bots play
 ### prerequisites 
 ```
 sudo apt install clang xterm espeak python3 python3-pip libx11-dev
-sudo pip3 install --upgrade pip
-sudo pip3 install tensorflow-cpu
-sudo pip3 install --upgrade tensorflow-cpu
+sudo python3 -m pip install --upgrade pip
+sudo python3 -m pip install tensorflow-cpu
+sudo python3 -m pip install --upgrade tensorflow-cpu
 ```
 
 ### onnx
