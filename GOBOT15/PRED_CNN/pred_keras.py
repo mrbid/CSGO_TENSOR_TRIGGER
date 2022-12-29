@@ -1,20 +1,23 @@
 # James William Fletcher (github.com/mrbid)
-#       C to ONNX Bridge for Predictor
-#               DECEMBER 2022
+#       C to Keras Bridge for Predictor
+#               SEPTEMBER 2022
 import os
 import numpy as np
-import onnxruntime as rt
+from tensorflow import keras
 from os.path import isfile
 from os.path import getsize
 from os import remove
 from struct import pack
 from time import sleep
 
-print("Don't close this window, it's running the C to ONNX `/dev/shm` bridge.")
+print("Don't close this window, it's running the C to Keras `/dev/shm` bridge.")
+
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 
 input_size = 784
 
-sess = rt.InferenceSession("model.onnx") 
+model = keras.models.load_model("keras_model")
 input_size_floats = input_size*4
 while True:
         try:
@@ -26,8 +29,7 @@ while True:
                                 remove("/dev/shm/pred_input.dat")
                                 if data.size == input_size:
                                         input = np.reshape(data, [-1, 28,28,1])
-                                        input_name = sess.get_inputs()[0].name
-                                        r = sess.run(None, {input_name: input})[0]
+                                        r = model.predict(input, verbose=0)
                                         with open("/dev/shm/pred_r.dat", "wb") as f2:
                                                 f2.write(pack('f', r))
                                                 f2.close()
