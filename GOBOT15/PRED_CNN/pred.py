@@ -11,6 +11,7 @@ from struct import pack
 from time import sleep
 
 print("Don't close this window, it's running the C to ONNX `/dev/shm` bridge.")
+print("\nYou may want to set this processes affinity or nice to prevent it going too buck wild on CPU resources.")
 
 input_size = 784
 
