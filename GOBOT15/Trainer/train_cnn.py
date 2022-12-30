@@ -16,6 +16,9 @@ from os import mkdir
 # disable warnings
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
+# train only on CPU?
+# os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
+
 # print everything / no truncations
 np.set_printoptions(threshold=sys.maxsize)
 
