@@ -8,6 +8,8 @@ Seems this dataset also works to some extent on CSS and 1.6 / CZ, to be honest i
 
 [Jim C. Williams](https://github.com/jcwml) has made a great implementation of this based on [TBVGG3](https://github.com/TFNN/TBVGG3) check out [Version One](https://github.com/jcwml/CSGO-Trigger-Bot) and more recently [Version Two](https://github.com/jcwml/CSGO-Trigger-Bot-2).
 
+Some Keras2c builds have been added [here.](GOBOT15/KERAS2C)
+
 ## Crosshair
 
 The game crosshair will get in the way of the bots ability to detect player models on the screen, you have a few options to mitigate this, each option is just as effective as the other:
