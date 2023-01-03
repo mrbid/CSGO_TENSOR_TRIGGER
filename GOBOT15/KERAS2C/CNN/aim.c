@@ -236,7 +236,7 @@ void processScanArea(Window w)
 
 void reprint()
 {
-    //system("clear");
+    system("clear");
     rainbow_printf("James William Fletcher (github.com/mrbid)\n");
     rainbow_printf("L-CTRL + L-ALT = Toggle BOT ON/OFF\n");
     rainbow_printf("R-CTRL + R-ALT = Toggle HOTKEYS ON/OFF\n");
