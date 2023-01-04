@@ -5,4 +5,4 @@ Keras2c seems to have a slight precision loss over using ONNX Runtime or Keras d
 
 The benefit of using Keras2c is that it is a more portable solution, it requires less dependencies and setup time, you can just install `clang` and `libx11-dev` from your package manager, execute `compile.sh` and the resultant binary will just run.
 
-I have also provided pre-compiled binaries that should work.
+I have also provided pre-compiled binaries.
