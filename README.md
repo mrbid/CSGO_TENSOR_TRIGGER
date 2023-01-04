@@ -6,7 +6,7 @@ Seems this dataset also works to some extent on CSS and 1.6 / CZ, to be honest i
 **GOBOT12 Video:** https://youtu.be/R-nCL5zqZBQ<br>
 **GOBOT11 Video:** https://youtu.be/UMBqk8CAe04
 
-- A [Keras2c](https://github.com/f0uriest/keras2c) builds have been added [here.](GOBOT15/KERAS2C)
+- A [Keras2c](https://github.com/f0uriest/keras2c) build has been added [here.](GOBOT15/KERAS2C)
 - A [libonnx](https://github.com/xboot/libonnx) build of the Keras CNN is [here.](GOBOT15/LIBONNX)
 - A [TBVGG3](https://github.com/TFNN/TBVGG3) version of the CNN is [here.](GOBOT15/TBVGG3)
 
