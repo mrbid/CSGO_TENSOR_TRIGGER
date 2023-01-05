@@ -11,6 +11,7 @@ The default builds in [PRED_CNN](GOBOT15/PRED_CNN) and [PRED_FNN](GOBOT15/PRED_F
 - A [Keras2c](https://github.com/f0uriest/keras2c) build has been added [here.](GOBOT15/KERAS2C) [220-250 FPS]
 - A [libonnx](https://github.com/xboot/libonnx) build of the Keras CNN is [here.](GOBOT15/LIBONNX) [130-150 FPS]
 - A [TBVGG3](https://github.com/TFNN/TBVGG3) version of the CNN is [here.](GOBOT15/TBVGG3) [330 FPS] _(smaller less accurate model)_
+- A standalone version of the FNN is [here.](https://gist.github.com/mrbid/c1216704ef2c429f973ccc1143a057d8)
 
 ## Crosshair
 
