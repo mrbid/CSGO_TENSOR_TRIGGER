@@ -111,7 +111,7 @@ k2c_activationType * k2c_tanh = k2c_tanh_func;
 void k2c_sigmoid_func(float * x, const size_t size) {
 
     for (size_t i=0; i < size; ++i) {
-        x[i] = 1/(1+expf(-x[i]));
+        x[i] = 1.f/(1.f+expf(-x[i]));
     }
 }
 k2c_activationType * k2c_sigmoid = k2c_sigmoid_func;
