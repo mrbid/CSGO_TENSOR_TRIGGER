@@ -243,6 +243,8 @@ void reprint()
     rainbow_printf("P = Toggle crosshair.\n");
     rainbow_printf("G = Get activation for reticule area.\n");
     rainbow_printf("H = Hold pressed to print scans per second.\n");
+    rainbow_printf("L = Toggle sample capture.\n");
+    rainbow_printf("E = Manual sample capture.\n");
     printf("\e[38;5;76m");
     printf("\nMake the crosshair a single green pixel.\nOR disable the game crosshair and use the crosshair provided by this bot.\nOR if your monitor provides a crosshair use that. (this is best)\n\n");
     printf("This bot will only auto trigger when W,A,S,D & L-SHIFT are not being pressed.\n(so when your not moving in game, aka stationary)\n\nL-SHIFT allows you to disable the bot while stationary if desired.\n\n");
@@ -415,39 +417,39 @@ int main(int argc, char *argv[])
                         speakS("cx off");
                     }
                 }
-            }
 
-            // sample capture toggle
-            if(key_is_pressed(XK_L))
-            {
-                if(sample_capture == 0)
+                // sample capture toggle
+                if(key_is_pressed(XK_L))
                 {
-                    char* home = getenv("HOME");
-                    sprintf(targets_dir, "%s/Desktop/targets", home);
-                    mkdir(targets_dir, 0777);
-                    sample_capture = 1;
-                    usleep(100000);
-                    reprint();
-                    speakS("sc on");
+                    if(sample_capture == 0)
+                    {
+                        char* home = getenv("HOME");
+                        sprintf(targets_dir, "%s/Desktop/targets", home);
+                        mkdir(targets_dir, 0777);
+                        sample_capture = 1;
+                        usleep(100000);
+                        reprint();
+                        speakS("sc on");
+                    }
+                    else
+                    {
+                        sample_capture = 0;
+                        usleep(100000);
+                        reprint();
+                        speakS("sc off");
+                    }
                 }
-                else
-                {
-                    sample_capture = 0;
-                    usleep(100000);
-                    reprint();
-                    speakS("sc off");
-                }
-            }
 
-            // sample capture
-            static uint64_t scd = 0;
-            if(sample_capture == 1 && key_is_pressed(XK_E) && microtime() > scd)
-            {
-                char name[32];
-                sprintf(name, "%s/%i.pgm", targets_dir, rand());
-                writePGM(name, &pgmbytes[0]);
-                printf("\e[93mMANUAL SAVE:\e[38;5;123m %s\n", name);
-                scd = microtime() + 350000;
+                // sample capture
+                static uint64_t scd = 0;
+                if(sample_capture == 1 && key_is_pressed(XK_E) && microtime() > scd)
+                {
+                    char name[32];
+                    sprintf(name, "%s/%i.pgm", targets_dir, rand());
+                    writePGM(name, &pgmbytes[0]);
+                    printf("\e[93mMANUAL SAVE:\e[38;5;123m %s\n", name);
+                    scd = microtime() + 350000;
+                }
             }
             
             if(hotkeys == 1 && key_is_pressed(XK_G)) // print activation when pressed

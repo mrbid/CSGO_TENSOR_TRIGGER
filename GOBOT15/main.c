@@ -6,6 +6,8 @@
     
     You may want to install espeak via your package manager.
 
+    sudo apt install clang espeak libx11-dev
+
 */
 
 #include <stdio.h>
