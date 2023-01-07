@@ -74,11 +74,13 @@ uint hotkeys = 1;
 /***************************************************
    ~~ Utils
 */
+#ifdef SCAN_VARIANCE
 uint qRand(const float min, const float max)
 {
     static float rndmax = 1.f/(float)RAND_MAX;
     return (((float)rand()) * rndmax) * (max-min) + min;
 }
+#endif
 
 void writePPM(const char* file, const unsigned char* data)
 {
@@ -157,9 +159,9 @@ void rainbow_line_printf(const char* text)
     printf("\e[38;5;123m");
 }
 
-//https://www.cl.cam.ac.uk/~mgk25/ucs/keysymdef.h
 int key_is_pressed(KeySym ks)
 {
+    // https://www.cl.cam.ac.uk/~mgk25/ucs/keysymdef.h
     char keys_return[32];
     XQueryKeymap(d, keys_return);
     KeyCode kc2 = XKeysymToKeycode(d, ks);
@@ -251,7 +253,7 @@ void processScanArea(Window w)
     }
 
     // free image block
-    XFree(img);
+    XDestroyImage(img);
 }
 
 void reprint()
@@ -266,6 +268,8 @@ void reprint()
     rainbow_printf("E = Capture sample.\n");
     rainbow_printf("G = Get activation for reticule area.\n");
     rainbow_printf("H = Hold pressed to print scans per second.\n");
+    rainbow_printf("L = Toggle sample capture.\n");
+    rainbow_printf("E = Manual sample capture.\n");
     printf("\e[38;5;76m");
     printf("\nMake the crosshair a single green pixel.\nOR disable the game crosshair and use the crosshair provided by this bot.\nOR if your monitor provides a crosshair use that. (this is best)\n\n");
     printf("This bot will only auto trigger when W,A,S,D & L-SHIFT are not being pressed.\n(so when your not moving in game, aka stationary)\n\nL-SHIFT allows you to disable the bot while stationary if desired.\n\n");
