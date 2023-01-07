@@ -137,11 +137,13 @@ float processModel()
 /***************************************************
    ~~ Utils
 */
+#ifdef SCAN_VARIANCE
 uint qRand(const float min, const float max)
 {
     static float rndmax = 1.f/(float)RAND_MAX;
     return (((float)rand()) * rndmax) * (max-min) + min;
 }
+#endif
 
 void writePGM(const char* file, const unsigned char* data)
 {
@@ -264,7 +266,7 @@ void processScanArea(Window w)
 #endif
     if(img == NULL)
         return;
-
+    
     // extract colour information
     int i = 0;
     for(int y = 0; y < r0; y++)
@@ -284,7 +286,7 @@ void processScanArea(Window w)
     }
 
     // free image block
-    XFree(img);
+    XDestroyImage(img);
 
     // increment SPS
     sps++;
