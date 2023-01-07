@@ -247,9 +247,9 @@ if isdir(project):
             if f:
                 f.write(str(layer.get_weights()))
             f.close()
-            np.savetxt(project + "/" + layer.name + ".csv", layer.get_weights()[0].flatten(), delimiter=",") # weights
+            np.savetxt(project + "/" + layer.name + ".csv", layer.get_weights()[0].transpose().flatten(), delimiter=",") # weights
             if use_bias == True:
-                np.savetxt(project + "/" + layer.name + "_bias.csv", layer.get_weights()[1].flatten(), delimiter=",") # biases
+                np.savetxt(project + "/" + layer.name + "_bias.csv", layer.get_weights()[1].transpose().flatten(), delimiter=",") # biases
 
     # save CNN weights as C header
     f = open(project + "/" + project + "_layers.h", "w")
@@ -260,7 +260,7 @@ if isdir(project):
             weights = layer.get_weights()
             if weights != []:
                 f.write("const float " + layer.name + "[] = {")
-                for w in weights[0].flatten():
+                for w in weights[0].transpose().flatten():
                     if isfirst == 0:
                         f.write(str(w))
                         isfirst = 1
@@ -270,7 +270,7 @@ if isdir(project):
                 if use_bias == True:
                     isfirst = 0
                     f.write("const float " + layer.name + "_bias[] = {")
-                    for w in weights[1].flatten():
+                    for w in weights[1].transpose().flatten():
                         if isfirst == 0:
                             f.write(str(w))
                             isfirst = 1

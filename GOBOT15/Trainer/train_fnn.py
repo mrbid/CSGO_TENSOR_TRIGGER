@@ -17,7 +17,7 @@ from os import mkdir
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 # train only on CPU?
-# os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
+os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 
 # print everything / no truncations
 np.set_printoptions(threshold=sys.maxsize)
@@ -60,12 +60,12 @@ if isdir(project):
     nontargets_x = []
     nontargets_y = []
     if isfile(project + "/nontargets_x.npy"):
-        print("Loading nontargets_x dataset.. (" + str(ntc) + ")")
+        print("Loading nontargets_x dataset..")
         st = time_ns()
         nontargets_x = np.load(project + "/nontargets_x.npy")
         print("Done in {:.2f}".format((time_ns()-st)/1e+9) + " seconds. (" + "{:.0f}".format(nontargets_x.size/784) + ")")
     else:
-        print("Creating nontargets_x dataset.. (" + str(ntc) + ")")
+        print("Creating nontargets_x dataset..")
         st = time_ns()
         files = glob.glob("nontarget/*")
         for f in files:
@@ -94,12 +94,12 @@ if isdir(project):
     targets_x = []
     targets_y = []
     if isfile(project + "/targets_x.npy"):
-        print("Loading targets_x dataset.. (" + str(tc) + ")")
+        print("Loading targets_x dataset..")
         st = time_ns()
         targets_x = np.load(project + "/targets_x.npy")
         print("Done in {:.2f}".format((time_ns()-st)/1e+9) + " seconds. (" + "{:.0f}".format(targets_x.size/784) + ")")
     else:
-        print("Creating targets_x dataset.. (" + str(tc) + ")")
+        print("Creating targets_x dataset..")
         st = time_ns()
         files = glob.glob("target/*")
         for f in files:
@@ -201,7 +201,7 @@ if isdir(project):
     f.write("#ifndef " + project + "_layers\n#define " + project + "_layers\n\n")
     if f:
         for layer in model.layers:
-            total_layer_weights = layer.get_weights()[0].flatten().shape[0]
+            total_layer_weights = layer.get_weights()[0].transpose().flatten().shape[0]
             total_layer_units = layer.units
             layer_weights_per_unit = total_layer_weights / total_layer_units
             #print(layer.get_weights()[0].flatten().shape)
@@ -216,7 +216,7 @@ if isdir(project):
             wc = 0
             bc = 0
             if layer.get_weights() != []:
-                for weight in layer.get_weights()[0].flatten():
+                for weight in layer.get_weights()[0].transpose().flatten():
                     wc += 1
                     if isfirst == 0:
                         f.write(str(weight))
@@ -224,7 +224,7 @@ if isdir(project):
                     else:
                         f.write("," + str(weight))
                     if wc == layer_weights_per_unit:
-                        f.write(", /* bias */ " + str(layer.get_weights()[1].flatten()[bc]))
+                        f.write(", /* bias */ " + str(layer.get_weights()[1].transpose().flatten()[bc]))
                         #print("bias", str(layer.get_weights()[1].flatten()[bc]))
                         wc = 0
                         bc += 1
