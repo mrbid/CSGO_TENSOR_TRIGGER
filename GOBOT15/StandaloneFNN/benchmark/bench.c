@@ -10,6 +10,7 @@
 #include <stdint.h>
 #include <sys/time.h>
 #include <x86intrin.h>
+#include <locale.h>
 
 // general
 #define forceinline __attribute__((always_inline)) inline
@@ -1375,13 +1376,16 @@ float randf()
 
 int main(int argc, char *argv[])
 {
+    setlocale(LC_NUMERIC, "");
     srandfq = time(0);
     float antioptim = 0.f;
     uint64_t stm, st, stf, stmf;
-
     float input[784];
-    for(int i = 0; i < 784; i++)
-        input[i] = randf();
+    for(int i = 0; i < 784; i++){input[i] = randf();}
+
+    ///
+
+    printf("> RANDOM INPUTS FOR BATCH ITERATION\n");
 
     ///
 
@@ -1406,6 +1410,44 @@ int main(int argc, char *argv[])
 
     for(uint i = 0; i < NUM_ITERATIONS; i++)
     {
+        const float r = processModelCM(&input[0]);
+        antioptim += r;
+    }
+
+    stf  = __rdtsc()-st;
+    stmf = microtime()-stm;
+
+    printf(":: COLUMN MAJOR :: %'lu μs, %'lu Cycles\n", stmf, stf);
+
+    ///
+
+    printf("\n> RANDOM INPUTS FOR EVERY ITERATION\n");
+
+    ///
+
+    stm = microtime();
+    st  = __rdtsc();
+
+    for(uint i = 0; i < NUM_ITERATIONS; i++)
+    {
+        for(int i = 0; i < 784; i++){input[i] = randf();}
+        const float r = processModelRM(&input[0]);
+        antioptim += r;
+    }
+
+    stf  = __rdtsc()-st;
+    stmf = microtime()-stm;
+
+    printf(":: ROW MAJOR :: %'lu μs, %'lu Cycles\n", stmf, stf);
+
+    ///
+
+    stm = microtime();
+    st  = __rdtsc();
+
+    for(uint i = 0; i < NUM_ITERATIONS; i++)
+    {
+        for(int i = 0; i < 784; i++){input[i] = randf();}
         const float r = processModelCM(&input[0]);
         antioptim += r;
     }
