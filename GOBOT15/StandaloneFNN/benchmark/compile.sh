@@ -1,1 +1,1 @@
-gcc bench.c -Ofast -march=native -mfma -lX11 -lm -o bench
+gcc bench.c -Ofast -march=native -mfma -lm -o bench
