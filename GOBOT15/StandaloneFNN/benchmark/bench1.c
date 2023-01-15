@@ -1,6 +1,9 @@
 /*
     James William Fletcher (github.com/mrbid)
         JANURARY 2023
+        
+    This version the Row Major is slower because it has
+    branches.
 */
 
 #include <stdio.h>
