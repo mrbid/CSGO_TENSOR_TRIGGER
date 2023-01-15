@@ -30,6 +30,7 @@ activator = 'tanh'
 hidden_layers = 0
 layer_units = 8
 batches = 24
+use_bias = False
 
 tc =  len(glob.glob('target/*'))    # target sample count/length
 ntc = len(glob.glob('nontarget/*')) # non-target sample count/length
@@ -148,13 +149,13 @@ shuffle_in_unison(train_x, train_y)
 
 # construct neural network
 model = Sequential()
-model.add(Dense(layer_units, activation=activator, input_dim=inputsize))
+model.add(Dense(layer_units, activation=activator, use_bias=use_bias, input_dim=inputsize))
 
 if hidden_layers > 0:
     for x in range(hidden_layers):
-        model.add(Dense(layer_units, activation=activator))
+        model.add(Dense(layer_units, use_bias=use_bias, activation=activator))
 
-model.add(Dense(1, activation='sigmoid'))
+model.add(Dense(1, use_bias=use_bias, activation='sigmoid'))
 
 # output summary
 model.summary()
@@ -191,7 +192,8 @@ if isdir(project):
     for layer in model.layers:
         if layer.get_weights() != []:
             np.savetxt(project + "/" + layer.name + ".csv", layer.get_weights()[0].flatten(), delimiter=",") # weights
-            np.savetxt(project + "/" + layer.name + "_bias.csv", layer.get_weights()[1].flatten(), delimiter=",") # bias
+            if use_bias == True:
+                np.savetxt(project + "/" + layer.name + "_bias.csv", layer.get_weights()[1].flatten(), delimiter=",") # bias
 
     # save weights for C array
     print("")
@@ -224,8 +226,9 @@ if isdir(project):
                     else:
                         f.write("," + str(weight))
                     if wc == layer_weights_per_unit:
-                        f.write(", /* bias */ " + str(layer.get_weights()[1].transpose().flatten()[bc]))
-                        #print("bias", str(layer.get_weights()[1].flatten()[bc]))
+                        if use_bias == True:
+                            f.write(", /* bias */ " + str(layer.get_weights()[1].transpose().flatten()[bc]))
+                            #print("bias", str(layer.get_weights()[1].flatten()[bc]))
                         wc = 0
                         bc += 1
             f.write("};\n\n")
