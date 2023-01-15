@@ -21,7 +21,6 @@
 #include <string.h>
 #include <unistd.h>
 
-#include <unistd.h>
 #include <stdint.h>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
