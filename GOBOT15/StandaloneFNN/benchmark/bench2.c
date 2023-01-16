@@ -1333,8 +1333,9 @@ float processModelRM(const float* input)
 
     for(int i = 0; i < 8; i++)
     {
+        const int io = i*784;
         for(int j = 0; j < 784; j++)
-            o1[i] += input[j] * aim_model_fnn_layer0[j];
+            o1[i] += input[j] * aim_model_fnn_layer0[io+j];
         o1[i] = tanhf(o1[i]);
     }
 
