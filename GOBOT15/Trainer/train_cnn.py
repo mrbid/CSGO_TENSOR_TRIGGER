@@ -23,12 +23,14 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 np.set_printoptions(threshold=sys.maxsize)
 
 # hyperparameters
+inputsize = 784
 project = "aim_model_cnn"
-training_iterations = 128
-filter_resolution = 96
+training_iterations = 333 #128
+filter_resolution = 256
 batches = 24
 use_bias = True
 use_padding = False
+beef_nontargets = 333
 
 pad = "valid"
 if use_padding == True:
@@ -36,6 +38,14 @@ if use_padding == True:
 
 tc =  len(glob.glob('target/*'))    # target sample count/length
 ntc = len(glob.glob('nontarget/*')) # non-target sample count/length
+
+# if non-targets is less than targets then padd/"beef" it out
+if tc-ntc > 0:
+    beef_nontargets = tc-ntc
+    if beef_nontargets > 0:
+        print("\n\n!!! Padding with " + str(beef_nontargets) + " random non-targets.\n")
+        tc = tc
+        ntc = tc
 
 # make project directory
 if not isdir(project):
@@ -112,7 +122,7 @@ if isdir(project):
         print("Loading nontargets_x dataset.. (" + str(ntc) + ")")
         st = time_ns()
         nontargets_x = np.load(project + "/nontargets_x.npy")
-        print("Done in {:.2f}".format((time_ns()-st)/1e+9) + " seconds. (" + "{:.0f}".format(nontargets_x.size/784) + ")")
+        print("Done in {:.2f}".format((time_ns()-st)/1e+9) + " seconds. (" + "{:.0f}".format(nontargets_x.size/inputsize) + ")")
     else:
         print("Creating nontargets_x dataset.. (" + str(ntc) + ")")
         st = time_ns()
@@ -146,7 +156,7 @@ if isdir(project):
         print("Loading targets_x dataset.. (" + str(tc) + ")")
         st = time_ns()
         targets_x = np.load(project + "/targets_x.npy")
-        print("Done in {:.2f}".format((time_ns()-st)/1e+9) + " seconds. (" + "{:.0f}".format(targets_x.size/784) + ")")
+        print("Done in {:.2f}".format((time_ns()-st)/1e+9) + " seconds. (" + "{:.0f}".format(targets_x.size/inputsize) + ")")
     else:
         print("Creating targets_x dataset.. (" + str(tc) + ")")
         st = time_ns()
@@ -177,6 +187,13 @@ if isdir(project):
 
 train_x = np.concatenate((nontargets_x, targets_x), axis=0)
 train_y = np.concatenate((nontargets_y, targets_y), axis=0)
+
+# beef up with random non-target samples
+if beef_nontargets > 0:
+    add_x = np.random.uniform(low=0, high=1, size=(beef_nontargets, 28,28,1))
+    add_y = np.zeros([beef_nontargets, 1], dtype=np.float32)
+    train_x = np.concatenate((train_x, add_x), axis=0)
+    train_y = np.concatenate((train_y, add_y), axis=0)
 
 shuffle_in_unison(train_x, train_y)
 
@@ -217,7 +234,7 @@ model.compile(optimizer='adam', loss='mean_squared_error')
 
 # train network
 st = time_ns()
-model.fit(train_x, train_y, epochs=training_iterations, batch_size=batches)
+history = model.fit(train_x, train_y, epochs=training_iterations, batch_size=batches)
 # model.fit(x_train, y_train, epochs=training_iterations, batch_size=batches, validation_data=(x_val, y_val))
 timetaken = (time_ns()-st)/1e+9
 print("")
@@ -254,7 +271,7 @@ if isdir(project):
     # save CNN weights as C header
     f = open(project + "/" + project + "_layers.h", "w")
     if f:
-        f.write("#ifndef " + project + "_layers\n#define " + project + "_layers\n\n")
+        f.write("#ifndef " + project + "_layers\n#define " + project + "_layers\n\n// loss: " + "a{:E}".format(history.history['loss'][-1]) + "\n\n")
         for layer in model.layers:
             isfirst = 0
             weights = layer.get_weights()
@@ -283,10 +300,10 @@ if isdir(project):
 
 # show results
 print("")
-pt = model.predict(targets_x)
+pt = model.predict(targets_x, verbose=0)
 ptavg = np.average(pt)
 
-pnt = model.predict(nontargets_x)
+pnt = model.predict(nontargets_x, verbose=0)
 pntavg = np.average(pnt)
 
 cnzpt =  np.count_nonzero(pt <= pntavg)
