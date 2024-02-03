@@ -1,6 +1,8 @@
 # CSGO_TENSOR_TRIGGER
 A series of machine learning trigger bots for Counter-Strike: Global Offensive (CS:GO).
 
+I made this from the ground up, I collected the dataset of 17,440 samples myself, initially manually and then assisted with automation. The initial working prototypes I created from the ground up in C, now the final solution uses Tensorflow Keras with Python and Keras2c & ONNX Runtime. There's a series of articles I wrote while I was working on those original protoypes that you can read [here](https://james-william-fletcher.medium.com/list/fps-machine-learning-autoshoot-bot-for-csgo-100153576e93).
+
 Seems this dataset also works to some extent on CSS and 1.6 / CZ, to be honest it will probably have similar results on any game with humanoid characters.
 
 **GOBOT12 Video:** https://youtu.be/R-nCL5zqZBQ<br>
